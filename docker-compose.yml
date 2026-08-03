@@ -1,0 +1,6 @@
+services:
+  web:
+    build: .
+    environment:
+      NODE_ENV: production
+    command: npm run start

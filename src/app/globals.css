@@ -1,0 +1,605 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0f172a;
+  --foreground: #0f172a;
+  --border-color: #333;
+  --border-color-hover: #444;
+  --card-gradient: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(17, 17, 17, 0.5) 50%,
+    #111 100%
+  );
+}
+
+/* Section background tones — alternate sections between these two so
+   consecutive sections read as distinct without a hard border. surface-1
+   is also reused for persistent chrome (navbar, modals, dropdowns). */
+@theme {
+  --color-surface-1: #0f172a;
+  --color-surface-2: #0f1629;
+}
+
+/* Brand color — overrides Tailwind's built-in red-* scale so every
+   existing red-* utility (bg-red-600, shadow-red-900/30, etc.) resolves
+   to a shade of the brand color #BE1A68 instead. */
+@theme {
+  --color-red-50: #fdedf4;
+  --color-red-100: #f9d7e7;
+  --color-red-200: #f5b3d2;
+  --color-red-300: #ee81b5;
+  --color-red-400: #e54390;
+  --color-red-500: #d71d76;
+  --color-red-600: #be1a68;
+  --color-red-700: #9d1556;
+  --color-red-800: #7e1145;
+  --color-red-900: #630e36;
+  --color-red-950: #3a0820;
+}
+
+/* Theme directive for Tailwind v3.3+ */
+@theme {
+  /* primary use */
+  --color-primary-base: var(--color-primary-base);
+  --color-primary-muted: var(--color-primary-muted);
+  --color-secondary-base: var(--color-secondary-base);
+  --color-info-base: var(--color-info-base);
+  --color-info-muted: var(--color-info-muted);
+  --color-warning-base: var(--color-warning-base);
+  --color-danger-base: var(--color-danger-base);
+  --color-success-base: var(--color-success-base);
+  --color-neutral-base: var(--color-neutral-base);
+  --color-neutral-muted: var(--color-neutral-muted);
+  --color-black-base: var(--color-black-base);
+  --color-black-solid: var(--color-black-solid);
+  --color-black-muted: var(--color-black-muted);
+  --color-gray-base: var(--color-gray-base);
+}
+
+/* dashboard animation  */
+
+/*  =========animation in the pricing card====== */
+@utility card-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: theme(borderRadius.2xl);
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -55%;
+    top: -55%;
+    height: 220%;
+    width: 220%;
+    animation: border-spin 7s linear infinite;
+    background: conic-gradient(
+      rgba(244, 114, 182, 0.4) 0deg,
+      rgba(192, 132, 252, 0.4) 0deg,
+      transparent 100deg
+    );
+  }
+}
+
+@utility card-content {
+  position: relative;
+  z-index: 10;
+  margin: 1px;
+  border-radius: calc(theme(borderRadius.2xl) - 1px);
+  background: linear-gradient(to bottom, #0e0f14, black);
+}
+
+@theme {
+  --animate-border-spin: border-spin 5s linear infinite;
+
+  @keyframes border-spin {
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+}
+
+/* Animation */
+
+@keyframes fullSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@layer utilities {
+  .spin-btn {
+    position: relative;
+    overflow: hidden;
+    border-radius: 9999px;
+  }
+
+  .spin-btn::before {
+    content: "";
+    position: absolute;
+    inset: -120%;
+    background: conic-gradient(from 0deg, #a78bfa 60deg, transparent 90deg);
+    animation: fullSpin 2s linear infinite;
+    transform-origin: center;
+  }
+
+  .spin-btn::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background: linear-gradient(to right, #371796, #6d28d9);
+    border-radius: 9999px;
+    z-index: 1;
+  }
+
+  .spin-btn span {
+    position: relative;
+    z-index: 2;
+  }
+
+  .spin-btn-red::before {
+    background: conic-gradient(from 0deg, #ee81b5 60deg, transparent 90deg);
+  }
+
+  .spin-btn-red::after {
+    background: linear-gradient(to right, #7e1145, #be1a68);
+  }
+}
+
+@layer base {
+  .container {
+    @apply max-w-[1440px] w-full mx-auto px-5 md:px-20;
+  }
+  .btn-n {
+    @apply items-center justify-center py-2 px-4 rounded-lg font-medium text-[16px] cursor-pointer transition-all duration-300 ease-in-out text-[#A1A4A5] border-[#252528] bg-[#0A0A0A] hover:text-black hover:bg-[#FAFAFA];
+  }
+
+  .btn-l {
+    @apply items-center justify-center py-2 px-4 rounded-full font-medium text-[16px] cursor-pointer transition-all duration-300 ease-in-out text-white;
+    background: linear-gradient(135deg, #2c1b61 0%, #6d28d9 100%);
+    border: 2px solid rgba(109, 40, 217, 0.5);
+    position: relative;
+  }
+
+  .paragrap {
+    @apply text-[#A1A4A5] text-center text-base font-medium leading-6 max-w-3xl mx-auto;
+  }
+  .heading {
+    @apply text-center font-medium leading-[150%] md:text-[48px] text-3xl font-[Geist] bg-clip-text text-transparent;
+    background-image: linear-gradient(180deg, #fff 26.39%, #737373 90.97%);
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+}
+
+/* Add to globals.css */
+.aspect-video {
+  aspect-ratio: 16 / 9;
+  position: relative;
+}
+
+.aspect-video img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Prevent layout shifts */
+.fixed-dimensions {
+  width: 100%;
+  height: auto;
+  min-height: 1px;
+}
+
+/* Optimize animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .transition-transform {
+    transition: none !important;
+  }
+
+  /* Target the specific hover effect */
+  .group:hover .group-hover\:scale-105 {
+    transform: none !important;
+  }
+
+  /* Or target all transform transitions */
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Add to your CSS file */
+.gradient-card {
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  background: var(--card-gradient);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.gradient-card:hover {
+  border-color: var(--border-color-hover);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Better alternative: Add to your Tailwind config instead */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #0f172a;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* font-family:Geist, Arial, Helvetica, sans-serif; */
+}
+
+/* Custom Scrollbar Styles */
+.scrollbar-custom {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(239, 68, 68, 0.3) rgba(30, 30, 30, 0.1);
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: rgba(30, 30, 30, 0.1);
+  border-radius: 10px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    rgba(239, 68, 68, 0.3),
+    rgba(239, 68, 68, 0.5)
+  );
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to bottom,
+    rgba(239, 68, 68, 0.5),
+    rgba(239, 68, 68, 0.7)
+  );
+}
+
+.scrollbar-custom::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 80s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 80s linear infinite;
+}
+
+/* Pause animation on hover */
+.animate-scroll-left:hover,
+.animate-scroll-right:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 20s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 20s linear infinite;
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 3s ease infinite;
+}
+
+.animate-float-1 {
+  animation: float-1 6s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: float-2 8s ease-in-out infinite;
+}
+
+.animate-float-3 {
+  animation: float-3 7s ease-in-out infinite;
+}
+
+.animate-float-4 {
+  animation: float-4 9s ease-in-out infinite;
+}
+
+/* Pause animations on hover */
+.group:hover .animate-marquee-left,
+.group:hover .animate-marquee-right {
+  animation-play-state: paused;
+}
+
+/* join now btn  */
+
+/* Enhanced Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  66% {
+    transform: translateY(5px) translateX(-5px);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.5;
+    box-shadow: 0 0 5px currentColor;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 15px currentColor;
+  }
+}
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-slow-reverse {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes orbit-top {
+  0%,
+  100% {
+    transform: translateX(-20px) translateY(0);
+  }
+  50% {
+    transform: translateX(20px) translateY(-10px);
+  }
+}
+
+@keyframes orbit-right {
+  0%,
+  100% {
+    transform: translateX(0) translateY(-20px);
+  }
+  50% {
+    transform: translateX(10px) translateY(20px);
+  }
+}
+
+@keyframes orbit-bottom {
+  0%,
+  100% {
+    transform: translateX(-20px) translateY(0);
+  }
+  50% {
+    transform: translateX(20px) translateY(10px);
+  }
+}
+
+@keyframes orbit-left {
+  0%,
+  100% {
+    transform: translateX(0) translateY(-20px);
+  }
+  50% {
+    transform: translateX(-10px) translateY(20px);
+  }
+}
+
+@keyframes connection-x {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateX(-8px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(8px);
+  }
+}
+
+@keyframes connection-y {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(-8px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes particle-1 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-20px, -20px);
+    opacity: 0;
+  }
+}
+
+@keyframes particle-2 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(15px, 15px);
+    opacity: 0;
+  }
+}
+
+@keyframes particle-3 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-10px, 10px);
+    opacity: 0;
+  }
+}
+
+/* Animation Classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+.animate-spin-slow-reverse {
+  animation: spin-slow-reverse 8s linear infinite;
+}
+
+.animate-orbit-top {
+  animation: orbit-top 3s ease-in-out infinite;
+}
+
+.animate-orbit-right {
+  animation: orbit-right 3.5s ease-in-out infinite;
+}
+
+.animate-orbit-bottom {
+  animation: orbit-bottom 4s ease-in-out infinite;
+}
+
+.animate-orbit-left {
+  animation: orbit-left 3.2s ease-in-out infinite;
+}
+
+.animate-connection-x {
+  animation: connection-x 2s ease-in-out infinite;
+}
+
+.animate-connection-y {
+  animation: connection-y 2.5s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.animate-particle-1 {
+  animation: particle-1 2s ease-out infinite;
+}
+
+.animate-particle-2 {
+  animation: particle-2 2.5s ease-out infinite;
+  animation-delay: 0.5s;
+}
+
+.animate-particle-3 {
+  animation: particle-3 3s ease-out infinite;
+  animation-delay: 1s;
+}
