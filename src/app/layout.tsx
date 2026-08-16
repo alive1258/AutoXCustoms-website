@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Providers from "../lib/providers/Providers";
+import ToastProvider from "../components/ToastProvider/ToastProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://autoxcustoms.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://autoxcustoms.com";
 const SITE_NAME = "AutoXCustoms";
 const TITLE = "AutoXCustoms | Car Paint, Restoration & Customization in Dhaka";
 const DESCRIPTION =
@@ -71,7 +72,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Providers>
+          {children}
+          <ToastProvider />
+        </Providers>
+      </body>
     </html>
   );
 }
