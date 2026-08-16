@@ -104,7 +104,7 @@ const Sidebar: React.FC<{
     <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sticky top-6">
       {/* User Info */}
       <div className="text-center pb-6 border-b border-slate-100">
-        <div className="w-20 h-20 rounded-full bg-emerald-100 mx-auto mb-3 flex items-center justify-center overflow-hidden">
+        <div className="w-20 h-20 rounded-full bg-red-100 mx-auto mb-3 flex items-center justify-center overflow-hidden">
           {user?.avatar ? (
             <Image
               src={user.avatar}
@@ -114,7 +114,7 @@ const Sidebar: React.FC<{
               className="object-cover"
             />
           ) : (
-            <span className="text-3xl font-bold text-emerald-600">
+            <span className="text-3xl font-bold text-red-600">
               {user?.name?.charAt(0) || "U"}
             </span>
           )}
@@ -134,14 +134,14 @@ const Sidebar: React.FC<{
               onClick={() => onTabChange(item.id)}
               className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all text-sm font-semibold ${
                 isActive
-                  ? "bg-emerald-50 text-emerald-600"
+                  ? "bg-red-50 text-red-600"
                   : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
               }`}
             >
-              <Icon size={18} className={isActive ? "text-emerald-600" : ""} />
+              <Icon size={18} className={isActive ? "text-red-600" : ""} />
               {item.label}
               {isActive && (
-                <ChevronRight size={16} className="ml-auto text-emerald-600" />
+                <ChevronRight size={16} className="ml-auto text-red-600" />
               )}
             </button>
           );
@@ -239,16 +239,16 @@ const ProfileTab: React.FC<{ user: any; refetch: () => void }> = ({
         <h2 className="text-xl font-extrabold text-slate-900">Profile</h2>
         <button
           onClick={() => setIsEditing(!isEditing)}
-          className="flex items-center gap-2 px-4 py-2 text-sm font-bold text-emerald-600 hover:bg-emerald-50 rounded-xl transition-all"
+          className="flex items-center gap-2 px-4 py-2 text-sm font-bold text-red-600 hover:bg-red-50 rounded-xl transition-all"
         >
           <Edit size={16} />
           {isEditing ? "Cancel" : "Edit"}
         </button>
       </div>
 
-      <div className="bg-emerald-50 rounded-2xl p-4 flex items-center gap-4">
-        <div className="p-2 bg-emerald-100 rounded-lg">
-          <Calendar size={20} className="text-emerald-600" />
+      <div className="bg-red-50 rounded-2xl p-4 flex items-center gap-4">
+        <div className="p-2 bg-red-100 rounded-lg">
+          <Calendar size={20} className="text-red-600" />
         </div>
         <div>
           <p className="text-sm font-bold text-slate-700">Member since</p>
@@ -275,7 +275,7 @@ const ProfileTab: React.FC<{ user: any; refetch: () => void }> = ({
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
-              className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-emerald-500 transition-all"
+              className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-red-500 transition-all"
             />
           ) : (
             <p className="text-sm text-slate-600">{user?.name || "N/A"}</p>
@@ -293,7 +293,7 @@ const ProfileTab: React.FC<{ user: any; refetch: () => void }> = ({
               onChange={(e) =>
                 setFormData({ ...formData, phone: e.target.value })
               }
-              className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-emerald-500 transition-all"
+              className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-red-500 transition-all"
             />
           ) : (
             <p className="text-sm text-slate-600">
@@ -313,7 +313,7 @@ const ProfileTab: React.FC<{ user: any; refetch: () => void }> = ({
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
-              className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-emerald-500 transition-all"
+              className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-red-500 transition-all"
             />
           ) : (
             <p className="text-sm text-slate-600">{user?.email || "N/A"}</p>
@@ -324,7 +324,7 @@ const ProfileTab: React.FC<{ user: any; refetch: () => void }> = ({
           <button
             onClick={handleSave}
             disabled={isLoading}
-            className="w-full py-3 bg-emerald-500 hover:bg-emerald-600 disabled:bg-slate-300 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2"
+            className="w-full py-3 bg-red-500 hover:bg-red-600 disabled:bg-slate-300 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2"
           >
             {isLoading && <Loader2 size={18} className="animate-spin" />}
             Save Changes
@@ -377,7 +377,7 @@ const OrdersTab: React.FC = () => {
       case "processing":
         return <AlertCircle size={16} className="text-purple-500" />;
       case "shipped":
-        return <Truck size={16} className="text-emerald-500" />;
+        return <Truck size={16} className="text-red-500" />;
       case "delivered":
         return <CheckCircle size={16} className="text-green-500" />;
       case "cancelled":
@@ -396,7 +396,7 @@ const OrdersTab: React.FC = () => {
       case "processing":
         return "bg-purple-100 text-purple-700";
       case "shipped":
-        return "bg-emerald-100 text-emerald-700";
+        return "bg-cyan-100 text-cyan-700";
       case "delivered":
         return "bg-green-100 text-green-700";
       case "cancelled":
@@ -409,7 +409,7 @@ const OrdersTab: React.FC = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <Loader2 size={32} className="animate-spin text-emerald-500" />
+        <Loader2 size={32} className="animate-spin text-red-500" />
       </div>
     );
   }
@@ -420,7 +420,7 @@ const OrdersTab: React.FC = () => {
         <h2 className="text-xl font-extrabold text-slate-900">My Orders</h2>
         <button
           onClick={() => refetch()}
-          className="text-sm text-emerald-600 hover:text-emerald-700 font-semibold"
+          className="text-sm text-red-600 hover:text-red-700 font-semibold"
         >
           Refresh
         </button>
@@ -434,7 +434,7 @@ const OrdersTab: React.FC = () => {
             onClick={() => setFilter(status.id)}
             className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${
               filter === status.id
-                ? "bg-emerald-500 text-white"
+                ? "bg-red-500 text-white"
                 : "bg-slate-100 text-slate-600 hover:bg-slate-200"
             }`}
           >
@@ -456,7 +456,7 @@ const OrdersTab: React.FC = () => {
           {orders.length === 0 && (
             <Link
               href="/"
-              className="inline-block mt-4 px-6 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl transition-all"
+              className="inline-block mt-4 px-6 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl transition-all"
             >
               Start Shopping
             </Link>
@@ -475,7 +475,7 @@ const OrdersTab: React.FC = () => {
                 <div className="flex items-center gap-4">
                   <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-slate-50 shrink-0">
                     {firstItem?.product_name ? (
-                      <div className="flex items-center justify-center w-full h-full bg-emerald-50 text-emerald-600 font-bold text-xs">
+                      <div className="flex items-center justify-center w-full h-full bg-red-50 text-red-600 font-bold text-xs">
                         {firstItem.quantity}x
                       </div>
                     ) : (
@@ -510,7 +510,7 @@ const OrdersTab: React.FC = () => {
                           )
                         : "N/A"}
                     </p>
-                    <p className="text-sm font-bold text-emerald-600">
+                    <p className="text-sm font-bold text-red-600">
                       ৳{Number(order.total_amount).toFixed(2)}
                     </p>
                   </div>
@@ -555,7 +555,7 @@ const WishlistTab: React.FC = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <Loader2 size={32} className="animate-spin text-emerald-500" />
+        <Loader2 size={32} className="animate-spin text-red-500" />
       </div>
     );
   }
@@ -566,7 +566,7 @@ const WishlistTab: React.FC = () => {
         <h2 className="text-xl font-extrabold text-slate-900">Wishlist</h2>
         <button
           onClick={() => refetch()}
-          className="text-sm text-emerald-600 hover:text-emerald-700 font-semibold"
+          className="text-sm text-red-600 hover:text-red-700 font-semibold"
         >
           Refresh
         </button>
@@ -580,7 +580,7 @@ const WishlistTab: React.FC = () => {
           </p>
           <Link
             href="/"
-            className="inline-block mt-4 px-6 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl transition-all"
+            className="inline-block mt-4 px-6 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl transition-all"
           >
             Start Shopping
           </Link>
@@ -616,12 +616,12 @@ const WishlistTab: React.FC = () => {
                 <p className="text-sm font-bold text-slate-800 truncate">
                   {item.product.name}
                 </p>
-                <p className="text-sm font-extrabold text-emerald-600">
+                <p className="text-sm font-extrabold text-red-600">
                   ৳{Number(item.product.price).toFixed(2)}
                 </p>
                 <button
                   onClick={() => handleAddToCart(item.product.id)}
-                  className="w-full mt-2 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm rounded-lg transition-all"
+                  className="w-full mt-2 py-2 bg-red-500 hover:bg-red-600 text-white font-bold text-sm rounded-lg transition-all"
                 >
                   Add to Cart
                 </button>
@@ -702,7 +702,7 @@ const AddressesTab: React.FC = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <Loader2 size={32} className="animate-spin text-emerald-500" />
+        <Loader2 size={32} className="animate-spin text-red-500" />
       </div>
     );
   }
@@ -713,7 +713,7 @@ const AddressesTab: React.FC = () => {
         <h2 className="text-xl font-extrabold text-slate-900">Addresses</h2>
         <button
           onClick={() => setShowAddForm(!showAddForm)}
-          className="flex items-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl transition-all"
+          className="flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl transition-all"
         >
           <Plus size={16} />
           Add New Address
@@ -734,18 +734,18 @@ const AddressesTab: React.FC = () => {
               key={address.id}
               className={`bg-white rounded-2xl p-4 border-2 transition-all ${
                 address.is_default
-                  ? "border-emerald-500 bg-emerald-50"
+                  ? "border-red-500 bg-red-50"
                   : "border-slate-100"
               }`}
             >
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-2">
-                  <Home size={18} className="text-emerald-600" />
+                  <Home size={18} className="text-red-600" />
                   <p className="font-bold text-slate-800">
                     {address.full_name || "Address"}
                   </p>
                   {address.is_default && (
-                    <span className="text-xs font-bold text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full">
+                    <span className="text-xs font-bold text-red-600 bg-red-100 px-2 py-0.5 rounded-full">
                       Default
                     </span>
                   )}
@@ -796,7 +796,7 @@ const AddressesTab: React.FC = () => {
                   onChange={(e) =>
                     setNewAddress({ ...newAddress, full_name: e.target.value })
                   }
-                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-emerald-500 transition-all"
+                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-red-500 transition-all"
                 />
               </div>
               <div>
@@ -810,7 +810,7 @@ const AddressesTab: React.FC = () => {
                   onChange={(e) =>
                     setNewAddress({ ...newAddress, phone: e.target.value })
                   }
-                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-emerald-500 transition-all"
+                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-red-500 transition-all"
                 />
               </div>
             </div>
@@ -826,7 +826,7 @@ const AddressesTab: React.FC = () => {
                   setNewAddress({ ...newAddress, address: e.target.value })
                 }
                 placeholder="House #123, Road #45"
-                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-emerald-500 transition-all"
+                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-red-500 transition-all"
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -841,7 +841,7 @@ const AddressesTab: React.FC = () => {
                     setNewAddress({ ...newAddress, area: e.target.value })
                   }
                   placeholder="Bashundhara R/A"
-                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-emerald-500 transition-all"
+                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-red-500 transition-all"
                 />
               </div>
               <div>
@@ -855,7 +855,7 @@ const AddressesTab: React.FC = () => {
                     setNewAddress({ ...newAddress, city: e.target.value })
                   }
                   placeholder="Dhaka"
-                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-emerald-500 transition-all"
+                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-red-500 transition-all"
                 />
               </div>
             </div>
@@ -871,7 +871,7 @@ const AddressesTab: React.FC = () => {
                     setNewAddress({ ...newAddress, state: e.target.value })
                   }
                   placeholder="Dhaka"
-                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-emerald-500 transition-all"
+                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-red-500 transition-all"
                 />
               </div>
               <div>
@@ -885,7 +885,7 @@ const AddressesTab: React.FC = () => {
                     setNewAddress({ ...newAddress, zip: e.target.value })
                   }
                   placeholder="1000"
-                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-emerald-500 transition-all"
+                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-red-500 transition-all"
                 />
               </div>
             </div>
@@ -900,7 +900,7 @@ const AddressesTab: React.FC = () => {
                       is_default: e.target.checked,
                     })
                   }
-                  className="w-4 h-4 text-emerald-500 rounded focus:ring-emerald-500"
+                  className="w-4 h-4 text-red-500 rounded focus:ring-red-500"
                 />
                 <span className="text-sm font-bold text-slate-700">
                   Set as default address
@@ -910,7 +910,7 @@ const AddressesTab: React.FC = () => {
             <div className="flex gap-3">
               <button
                 type="submit"
-                className="px-6 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl transition-all"
+                className="px-6 py-2.5 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl transition-all"
               >
                 Save Address
               </button>
@@ -939,7 +939,7 @@ export default function AccountPage() {
   if (isLoading) {
     return (
       <div className="bg-slate-50 min-h-screen flex items-center justify-center">
-        <Loader2 size={48} className="animate-spin text-emerald-500" />
+        <Loader2 size={48} className="animate-spin text-red-500" />
       </div>
     );
   }

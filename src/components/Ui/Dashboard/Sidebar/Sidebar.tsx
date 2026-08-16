@@ -102,7 +102,7 @@ const MENU_ITEMS: MenuItem[] = [
     ],
   },
   {
-    label: "Portfolio Website",
+    label: "Website",
     icon: Newspaper,
     children: [
       {
@@ -233,14 +233,19 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     >
       {/* Header / Logo */}
       <div className="h-16 flex items-center justify-between px-6 border-b border-gray-200">
-        <span className="md:font-bold md:text-xl text-base font-semibold text-emerald-600">
-          DDT Dashboard
+        <span className="flex flex-col leading-none">
+          <span className="md:text-xl text-base font-extrabold tracking-tight text-gray-200">
+            Auto<span className="text-red-600">X</span>Customs
+          </span>
+          <span className="text-[11px] text-gray-500 tracking-wide hidden md:block">
+            Dashboard
+          </span>
         </span>
 
         {/* Mobile Close Button */}
         <button
           onClick={onClose}
-          className="lg:hidden text-gray-500 hover:text-gray-700 p-1 rounded-md focus:outline-none hover:bg-gray-100 transition-colors"
+          className="lg:hidden text-gray-500 hover:text-white p-1 rounded-md focus:outline-none hover:bg-white/5 transition-colors"
           aria-label="Close Sidebar"
         >
           <X className="w-5 h-5" />
@@ -268,13 +273,17 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                   onClick={() => toggleDropdown(item.label)}
                   className={`w-full cursor-pointer flex items-center justify-between px-1.5 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                     isChildActive
-                      ? "bg-gray-100 text-emerald-700 font-semibold"
-                      : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                      ? "bg-red-500/10 text-red-400 font-semibold"
+                      : "text-gray-700 hover:bg-white/5 hover:text-white"
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     {ParentIcon && (
-                      <ParentIcon className="w-5 h-5 text-gray-500" />
+                      <ParentIcon
+                        className={`w-5 h-5 ${
+                          isChildActive ? "text-red-400" : "text-gray-500"
+                        }`}
+                      />
                     )}
                     <span>{item.label}</span>
                   </div>
@@ -303,16 +312,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                             onClick={onClose}
                             className={`flex items-center gap-3 px-1.5 py-2 rounded-lg text-sm font-medium transition-colors duration-150 ${
                               childActive
-                                ? "bg-emerald-50 text-emerald-700 font-semibold"
-                                : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+                                ? "bg-red-500/10 text-red-400 font-semibold"
+                                : "text-gray-500 hover:bg-white/5 hover:text-white"
                             }`}
                           >
                             {ChildIcon && (
                               <ChildIcon
                                 className={`w-4 h-4 transition-colors ${
-                                  childActive
-                                    ? "text-emerald-600"
-                                    : "text-gray-400"
+                                  childActive ? "text-red-400" : "text-gray-400"
                                 }`}
                               />
                             )}
@@ -339,14 +346,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
               }}
               className={`flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150 ${
                 singleActive
-                  ? "bg-gray-100 text-gray-900 font-semibold"
-                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                  ? "bg-red-500/10 text-red-400 font-semibold"
+                  : "text-gray-600 hover:bg-white/5 hover:text-white"
               }`}
             >
               {ParentIcon && (
                 <ParentIcon
                   className={`w-5 h-5 transition-colors ${
-                    singleActive ? "text-emerald-600" : "text-gray-500"
+                    singleActive ? "text-red-400" : "text-gray-500"
                   }`}
                 />
               )}

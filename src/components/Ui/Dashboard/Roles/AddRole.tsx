@@ -71,10 +71,10 @@ const AddRole: React.FC = () => {
         Back to roles
       </Link>
 
-      <h1 className="text-lg font-semibold text-gray-900 mb-1">Add Role</h1>
+      <h1 className="text-lg font-semibold text-gray-200 mb-1">Add Role</h1>
       <p className="text-sm text-gray-500 mb-6">
-        After creating the role, you&apos;ll be taken to its permission
-        matrix to configure access.
+        After creating the role, you&apos;ll be taken to its permission matrix
+        to configure access.
       </p>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

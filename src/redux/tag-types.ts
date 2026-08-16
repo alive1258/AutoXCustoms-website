@@ -19,6 +19,12 @@ export const tagTypes: Record<string, string> = {
   question_answers: "question-answers",
   banners: "banners",
   purchases: "purchases",
+  projects: "projects",
+  hero: "hero",
+  about: "about",
+  services: "services",
+  gallery: "gallery",
+  client_video_reviews: "client-video-reviews",
 };
 
 export const tagTypesList: string[] = [
@@ -42,4 +48,10 @@ export const tagTypesList: string[] = [
   tagTypes.question_answers,
   tagTypes.banners,
   tagTypes.purchases,
+  tagTypes.projects,
+  tagTypes.hero,
+  tagTypes.about,
+  tagTypes.services,
+  tagTypes.gallery,
+  tagTypes.client_video_reviews,
 ];

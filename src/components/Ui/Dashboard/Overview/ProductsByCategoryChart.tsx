@@ -35,7 +35,7 @@ function CustomTooltip({
   return (
     <div className="rounded-lg border border-black/10 bg-white px-3 py-2 shadow-md">
       <p className="text-xs font-semibold text-gray-500">{label}</p>
-      <p className="text-sm font-bold text-gray-900">
+      <p className="text-sm font-bold text-gray-200">
         {payload[0].value} products
       </p>
     </div>
@@ -68,7 +68,7 @@ export default function ProductsByCategoryChart({
   if (products.length === 0) {
     return (
       <div className="h-64 flex flex-col items-center justify-center text-center p-6">
-        <p className="text-gray-900 font-bold text-sm">No products yet</p>
+        <p className="text-gray-200 font-bold text-sm">No products yet</p>
         <p className="text-xs text-gray-500 mt-1">
           Product distribution by category will appear here.
         </p>
@@ -79,10 +79,7 @@ export default function ProductsByCategoryChart({
   return (
     <div className="h-64 w-full">
       <ResponsiveContainer width="100%" height="100%" minHeight={240}>
-        <BarChart
-          data={data}
-          margin={{ top: 8, right: 8, left: 0, bottom: 0 }}
-        >
+        <BarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
           <CartesianGrid
             vertical={false}
             stroke="#e1e0d9"
@@ -106,7 +103,12 @@ export default function ProductsByCategoryChart({
             allowDecimals={false}
           />
           <Tooltip content={<CustomTooltip />} cursor={{ fill: "#f9f9f7" }} />
-          <Bar dataKey="count" fill={CHART_ORANGE} radius={[4, 4, 0, 0]} maxBarSize={40} />
+          <Bar
+            dataKey="count"
+            fill={CHART_ORANGE}
+            radius={[4, 4, 0, 0]}
+            maxBarSize={40}
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>

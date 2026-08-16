@@ -12,8 +12,10 @@ import {
 } from "lucide-react";
 import { FaFacebook } from "react-icons/fa";
 import SlideUp from "@/src/components/Common/Animaation/SlideUp";
+import { useGetActiveHeroQuery } from "@/src/redux/api/heroApi";
+import { resolveStatIcon } from "@/src/utils/statIconMap";
 
-const trustStats = [
+const defaultTrustStats = [
   { icon: FaFacebook, value: "8.9K+", label: "Facebook Followers" },
   { icon: Wrench, value: "10+", label: "Years Experience" },
   { icon: Car, value: "500+", label: "Vehicles Restored & Serviced" },
@@ -32,7 +34,39 @@ const scrollToSection = (id: string) => {
   window.scrollTo({ top: y, behavior: "smooth" });
 };
 
+const handleCtaClick = (link?: string) => {
+  if (!link) return;
+  if (link.startsWith("#")) {
+    scrollToSection(link.slice(1));
+  } else {
+    window.location.href = link;
+  }
+};
+
 export default function Hero() {
+  const { data } = useGetActiveHeroQuery();
+  const hero = data?.data;
+
+  const badge = hero?.badge || "Dhaka's Premium Auto Detailing Studio";
+  const title = hero?.title || "Where Machines Become Art";
+  const description =
+    hero?.description ||
+    "Premium Auto Detailing, Restoration & Customization in Dhaka";
+  const backgroundImage = hero?.image || "/images/hero-bg.jpg";
+  const primaryButtonText = hero?.primary_button_text || "Book a Service";
+  const primaryButtonLink = hero?.primary_button_link || "#contact";
+  const secondaryButtonText = hero?.secondary_button_text || "View Our Work";
+  const secondaryButtonLink = hero?.secondary_button_link || "#portfolio";
+  const ratingLabel = hero?.rating_label || "See what our customers say";
+  const trustStats =
+    hero?.stats && hero.stats.length > 0
+      ? hero.stats.map((s) => ({
+          icon: resolveStatIcon(s.icon),
+          value: s.value,
+          label: s.label,
+        }))
+      : defaultTrustStats;
+
   return (
     <section
       id="home"
@@ -40,7 +74,7 @@ export default function Hero() {
     >
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url(/images/hero-bg.jpg)" }}
+        style={{ backgroundImage: `url(${backgroundImage})` }}
       />
       <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/50 to-black" />
       <div className="absolute -top-32 -right-32 w-96 h-96 bg-red-700/20 rounded-full blur-3xl" />
@@ -50,34 +84,36 @@ export default function Hero() {
         <SlideUp className="text-center max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/15 bg-white/5 text-xs sm:text-sm text-gray-300 mb-6">
             <Star className="w-3.5 h-3.5 text-red-500 fill-red-500" />
-            Dhaka&apos;s Premium Auto Detailing Studio
+            {badge}
           </div>
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight text-white">
-            Where Machines <span className="text-red-600">Become Art</span>
+            {title}
           </h1>
 
           <p className="text-lg sm:text-xl text-gray-300 mt-6 max-w-2xl mx-auto">
-            Premium Auto Detailing, Restoration &amp; Customization in Dhaka
+            {description}
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => handleCtaClick(primaryButtonLink)}
               className="spin-btn spin-btn-red px-8 sm:px-10 h-14 text-white font-semibold text-sm sm:text-base rounded-xl"
             >
               <span className="flex items-center gap-2">
-                Book a Service
+                {primaryButtonText}
                 <ArrowRight className="w-4 h-4" />
               </span>
             </button>
 
-            <button
-              onClick={() => scrollToSection("portfolio")}
-              className="inline-flex items-center px-8 sm:px-10 h-14 text-white font-semibold text-sm sm:text-base rounded-xl border border-white/20 hover:bg-white/10 transition-all duration-300 ease-in-out"
-            >
-              View Our Work
-            </button>
+            {secondaryButtonText && (
+              <button
+                onClick={() => handleCtaClick(secondaryButtonLink)}
+                className="inline-flex items-center px-8 sm:px-10 h-14 text-white font-semibold text-sm sm:text-base rounded-xl border border-white/20 hover:bg-white/10 transition-all duration-300 ease-in-out"
+              >
+                {secondaryButtonText}
+              </button>
+            )}
           </div>
 
           <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2">
@@ -121,7 +157,7 @@ export default function Hero() {
               <Star className="w-3.5 h-3.5 fill-red-500" />
               <Star className="w-3.5 h-3.5 fill-red-500" />
             </span>
-            See what our customers say
+            {ratingLabel}
           </button>
         </SlideUp>
       </div>

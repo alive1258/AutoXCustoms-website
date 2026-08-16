@@ -1,4 +1,4 @@
-import EditQuestionAnswer from "@/src/components/Dashboard/QuestionAnswer/EditQuestionAnswer";
+import EditQuestionAnswer from "@/src/components/Ui/Dashboard/QuestionAnswer/EditQuestionAnswer";
 
 interface PageProps {
   params: Promise<{

@@ -126,7 +126,7 @@ const EditGallery: React.FC<EditGalleryProps> = ({ id }) => {
     return (
       <div className="flex h-64 items-center justify-center rounded-lg border bg-white p-6">
         <div className="flex items-center gap-2 text-gray-500">
-          <Loader2 className="h-6 w-6 animate-spin text-emerald-600" />
+          <Loader2 className="h-6 w-6 animate-spin text-red-600" />
           <span>Loading gallery item details...</span>
         </div>
       </div>
@@ -170,7 +170,7 @@ const EditGallery: React.FC<EditGalleryProps> = ({ id }) => {
               id="is_active"
               type="checkbox"
               {...register("is_active")}
-              className="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+              className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
             />
             <label htmlFor="is_active" className="text-sm font-medium text-gray-700">
               Active (visible on homepage)
@@ -189,7 +189,7 @@ const EditGallery: React.FC<EditGalleryProps> = ({ id }) => {
               {...register("description", {
                 required: "Description is required",
               })}
-              className={`w-full rounded-lg border px-3.5 py-2.5 text-sm outline-none transition focus:ring-2 focus:ring-emerald-600 focus:border-transparent bg-white ${
+              className={`w-full rounded-lg border px-3.5 py-2.5 text-sm outline-none transition focus:ring-2 focus:ring-red-600 focus:border-transparent bg-white ${
                 errors.description ? "border-red-400" : "border-gray-300"
               }`}
             />
@@ -226,7 +226,7 @@ const EditGallery: React.FC<EditGalleryProps> = ({ id }) => {
           )}
 
           {/* New Image Upload & Preview */}
-          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-emerald-500 transition bg-gray-50/50">
+          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-red-500 transition bg-gray-50/50">
             <label className="block mb-2 font-semibold text-sm text-gray-700">
               Replace Images
             </label>
@@ -276,8 +276,8 @@ const EditGallery: React.FC<EditGalleryProps> = ({ id }) => {
               className="block w-full text-sm text-gray-500
               file:mr-4 file:py-2 file:px-4
               file:rounded-full file:border-0
-              file:font-semibold file:bg-emerald-50
-              file:text-emerald-700 hover:file:bg-emerald-100
+              file:font-semibold file:bg-red-50
+              file:text-red-700 hover:file:bg-red-100
               cursor-pointer"
             />
           </div>

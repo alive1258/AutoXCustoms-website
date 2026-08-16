@@ -29,7 +29,9 @@ export const DNavbar: React.FC<DNavbarProps> = ({ onOpenSidebar }) => {
             />
           </svg>
         </button>
-        <h2 className="lg:hidden text-emerald-600 font-semibold">DDT</h2>
+        <h2 className="lg:hidden font-extrabold tracking-tight text-gray-200">
+          Auto<span className="text-red-600">X</span>Customs
+        </h2>
       </div>
 
       <div className="flex items-center gap-4">

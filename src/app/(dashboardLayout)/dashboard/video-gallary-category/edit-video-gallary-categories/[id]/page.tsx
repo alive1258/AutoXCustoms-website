@@ -1,4 +1,4 @@
-import EditVideoGallaryCategory from "@/src/components/Dashboard/VideoGallary/VideoGallaryCategory/EditVideoGallaryCategory";
+import EditVideoGallaryCategory from "@/src/components/Ui/Dashboard/VideoGallary/VideoGallaryCategory/EditVideoGallaryCategory";
 
 interface PageProps {
   params: Promise<{

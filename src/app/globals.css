@@ -238,7 +238,7 @@
    (heading text, must become light) — same token number, opposite intent. */
 .dashboard-theme .bg-white,
 .dashboard-theme .bg-gray-50 {
-  background-color: var(--background);
+  background-color: #1b2234;
 }
 .dashboard-theme .bg-gray-100 {
   background-color: #141b2e;

@@ -137,7 +137,7 @@ const EditTestimonials: React.FC<EditTestimonialsProps> = ({ id }) => {
     return (
       <div className="flex h-64 items-center justify-center rounded-lg border bg-white p-6">
         <div className="flex items-center gap-2 text-gray-500">
-          <Loader2 className="h-6 w-6 animate-spin text-emerald-600" />
+          <Loader2 className="h-6 w-6 animate-spin text-red-600" />
           <span>Loading testimonial details...</span>
         </div>
       </div>
@@ -157,12 +157,12 @@ const EditTestimonials: React.FC<EditTestimonialsProps> = ({ id }) => {
 
       <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Patient Name */}
+          {/* Customer Name */}
           <Input
-            label="Patient Name"
+            label="Customer Name"
             text="name"
             register={register("name", {
-              required: "Patient name is required",
+              required: "Customer name is required",
             })}
             errors={errors}
           />
@@ -234,7 +234,7 @@ const EditTestimonials: React.FC<EditTestimonialsProps> = ({ id }) => {
               id="is_active"
               type="checkbox"
               {...register("is_active")}
-              className="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+              className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
             />
             <label htmlFor="is_active" className="text-sm font-medium text-gray-700">
               Active (visible on homepage)
@@ -256,9 +256,9 @@ const EditTestimonials: React.FC<EditTestimonialsProps> = ({ id }) => {
           />
 
           {/* Image Upload & Preview */}
-          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-6 hover:border-emerald-500 transition bg-gray-50/50">
+          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-6 hover:border-red-500 transition bg-gray-50/50">
             <label className="block mb-2 font-semibold text-sm text-gray-700">
-              Patient Photo
+              Customer Photo
             </label>
 
             <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -266,7 +266,7 @@ const EditTestimonials: React.FC<EditTestimonialsProps> = ({ id }) => {
                 <div className="relative h-28 w-28 overflow-hidden rounded-full border border-gray-200 bg-white shrink-0">
                   <Image
                     src={imagePreview}
-                    alt="Patient Photo Preview"
+                    alt="Customer Photo Preview"
                     fill
                     className="object-cover"
                     unoptimized
@@ -286,8 +286,8 @@ const EditTestimonials: React.FC<EditTestimonialsProps> = ({ id }) => {
                   className="block w-full text-sm text-gray-500
                   file:mr-4 file:py-2 file:px-4
                   file:rounded-full file:border-0
-                  file:font-semibold file:bg-emerald-50
-                  file:text-emerald-700 hover:file:bg-emerald-100
+                  file:font-semibold file:bg-red-50
+                  file:text-red-700 hover:file:bg-red-100
                   cursor-pointer"
                 />
                 <p className="text-xs text-gray-400 mt-2">

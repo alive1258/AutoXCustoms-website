@@ -1,4 +1,4 @@
-import AddBlogDetails from "@/src/components/Dashboard/Blog/BlogDetails/AddBlogDetails";
+import AddBlogDetails from "@/src/components/Ui/Dashboard/Blog/BlogDetails/AddBlogDetails";
 
 interface PageProps {
   searchParams: Promise<{ blog_id?: string }>;

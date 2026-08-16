@@ -329,7 +329,7 @@ const AddProducts = () => {
                 type="checkbox"
                 id="is_active"
                 {...register("is_active")}
-                className="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
               />
               <label htmlFor="is_active" className="text-sm text-gray-700">
                 Is Active (Visible in store)
@@ -338,7 +338,7 @@ const AddProducts = () => {
           </div>
 
           {/* Thumbnail Image Upload */}
-          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-emerald-500 transition">
+          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-red-500 transition">
             <label className="block mb-2 font-semibold text-sm text-gray-700">
               Product Thumbnail
             </label>
@@ -353,9 +353,9 @@ const AddProducts = () => {
               file:rounded-full
               file:border-0
               file:font-semibold
-              file:bg-emerald-50
-              file:text-emerald-700
-              hover:file:bg-emerald-100"
+              file:bg-red-50
+              file:text-red-700
+              hover:file:bg-red-100"
             />
           </div>
 
@@ -415,7 +415,7 @@ const AddProducts = () => {
                 value={specLabel}
                 onChange={(e) => setSpecLabel(e.target.value)}
                 placeholder="Label (e.g. Weight)"
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
               />
               <input
                 type="text"
@@ -428,12 +428,12 @@ const AddProducts = () => {
                   }
                 }}
                 placeholder="Value (e.g. 500g)"
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
               />
               <button
                 type="button"
                 onClick={handleAddSpecification}
-                className="sm:col-span-2 flex items-center justify-center gap-1.5 text-sm font-medium text-emerald-600 hover:text-emerald-700"
+                className="sm:col-span-2 flex items-center justify-center gap-1.5 text-sm font-medium text-red-600 hover:text-red-700"
               >
                 <Plus size={16} />
                 Add Specification
@@ -465,7 +465,7 @@ const AddProducts = () => {
             <textarea
               rows={3}
               {...register("meta_description")}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
               placeholder="Enter SEO description for search engines..."
             />
           </div>

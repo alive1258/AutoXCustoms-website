@@ -223,7 +223,7 @@ const AddBlogPost = () => {
             <textarea
               rows={2}
               {...register("excerpt")}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
               placeholder="Brief summary of the article..."
             />
           </div>
@@ -238,7 +238,7 @@ const AddBlogPost = () => {
               {...register("content", {
                 required: "Post content cannot be empty",
               })}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
               placeholder="Write your blog post content here..."
             />
             {errors.content && (
@@ -249,7 +249,7 @@ const AddBlogPost = () => {
           </div>
 
           {/* Image Upload & Preview */}
-          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-emerald-500 transition">
+          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-red-500 transition">
             <label className="block mb-2 font-semibold text-sm text-gray-700">
               Featured Image / Cover Image
             </label>
@@ -276,9 +276,9 @@ const AddBlogPost = () => {
               file:rounded-full
               file:border-0
               file:font-semibold
-              file:bg-emerald-50
-              file:text-emerald-700
-              hover:file:bg-emerald-100"
+              file:bg-red-50
+              file:text-red-700
+              hover:file:bg-red-100"
             />
           </div>
 
@@ -306,7 +306,7 @@ const AddBlogPost = () => {
             <textarea
               rows={3}
               {...register("meta_description")}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
               placeholder="Enter SEO description for search engines..."
             />
           </div>

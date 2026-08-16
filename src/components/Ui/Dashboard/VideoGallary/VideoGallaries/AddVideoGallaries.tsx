@@ -181,7 +181,7 @@ const AddVideoGallaries: React.FC = () => {
           />
 
           {/* Thumbnail Upload with Preview */}
-          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-6 hover:border-emerald-500 transition bg-gray-50/50">
+          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-6 hover:border-red-500 transition bg-gray-50/50">
             <label className="block mb-2 font-semibold text-sm text-gray-700">
               Video Thumbnail Image
             </label>
@@ -214,9 +214,9 @@ const AddVideoGallaries: React.FC = () => {
                   file:rounded-full
                   file:border-0
                   file:font-semibold
-                  file:bg-emerald-50
-                  file:text-emerald-700
-                  hover:file:bg-emerald-100
+                  file:bg-red-50
+                  file:text-red-700
+                  hover:file:bg-red-100
                   cursor-pointer"
                 />
                 <p className="text-xs text-gray-400 mt-2">

@@ -52,7 +52,7 @@ const AddAbout = () => {
     formState: { errors },
   } = useForm<AddAboutFormValues>({
     defaultValues: {
-      eyebrow: "About The Doctor",
+      eyebrow: "About AutoXCustoms",
       name: "",
       title: "",
       specialty: "",
@@ -170,7 +170,7 @@ const AddAbout = () => {
           <Input
             label="Eyebrow (Optional)"
             text="eyebrow"
-            placeholder="About The Doctor"
+            placeholder="About AutoXCustoms"
             register={register("eyebrow")}
             errors={errors}
             required={false}
@@ -180,16 +180,16 @@ const AddAbout = () => {
           <Input
             label="Name"
             text="name"
-            placeholder="Dr. Anarul Islam"
+            placeholder="AutoXCustoms Workshop"
             register={register("name", { required: "Name is required" })}
             errors={errors}
           />
 
           {/* Title */}
           <Input
-            label="Title (Qualifications)"
+            label="Title (Headline)"
             text="title"
-            placeholder="MBBS (DU), MS Neurosurgery (Course)"
+            placeholder="Craftsmanship Behind Every Finish"
             register={register("title", { required: "Title is required" })}
             errors={errors}
           />
@@ -198,7 +198,7 @@ const AddAbout = () => {
           <Input
             label="Specialty"
             text="specialty"
-            placeholder="Neurosurgery & General Medicine"
+            placeholder="Paint, Restoration & Customization"
             register={register("specialty", { required: "Specialty is required" })}
             errors={errors}
           />
@@ -207,7 +207,7 @@ const AddAbout = () => {
           <Input
             label="Registration (Optional)"
             text="registration"
-            placeholder="BMDC Reg. No. — 12345"
+            placeholder="Trade License No. — 12345"
             register={register("registration")}
             errors={errors}
             required={false}
@@ -229,7 +229,7 @@ const AddAbout = () => {
               id="is_active"
               type="checkbox"
               {...register("is_active")}
-              className="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+              className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
             />
             <label htmlFor="is_active" className="text-sm font-medium text-gray-700">
               Active (visible on homepage)
@@ -268,7 +268,7 @@ const AddAbout = () => {
                 onChange={(e) => setBioInput(e.target.value)}
                 placeholder="Add a bio paragraph..."
                 rows={2}
-                className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
               />
               <button
                 type="button"
@@ -320,21 +320,21 @@ const AddAbout = () => {
                 value={infoIcon}
                 onChange={(e) => setInfoIcon(e.target.value)}
                 placeholder="Icon (e.g. GraduationCap)"
-                className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
               />
               <input
                 type="text"
                 value={infoLabel}
                 onChange={(e) => setInfoLabel(e.target.value)}
                 placeholder="Label (e.g. Qualifications)"
-                className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
               />
               <input
                 type="text"
                 value={infoValue}
                 onChange={(e) => setInfoValue(e.target.value)}
-                placeholder="Value (e.g. MBBS (DU), CMU)"
-                className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                placeholder="Value (e.g. 10+ Years Experience)"
+                className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
               />
               <button
                 type="button"
@@ -348,9 +348,9 @@ const AddAbout = () => {
           </div>
 
           {/* Image Upload & Preview */}
-          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-emerald-500 transition">
+          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-red-500 transition">
             <label className="block mb-2 font-semibold text-sm text-gray-700">
-              Doctor Photo
+              Workshop Photo
             </label>
 
             {imagePreview ? (
@@ -379,9 +379,9 @@ const AddAbout = () => {
               file:rounded-full
               file:border-0
               file:font-semibold
-              file:bg-emerald-50
-              file:text-emerald-700
-              hover:file:bg-emerald-100"
+              file:bg-red-50
+              file:text-red-700
+              hover:file:bg-red-100"
             />
           </div>
         </div>

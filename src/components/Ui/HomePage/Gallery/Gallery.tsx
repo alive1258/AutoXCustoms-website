@@ -1,11 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { X, Play, ChevronDown } from "lucide-react";
 import SlideUp from "@/src/components/Common/Animaation/SlideUp";
 import ZoomIn from "@/src/components/Common/Animaation/ZoomIn";
+import { useGetAllVideoGallariesQuery } from "@/src/redux/api/videoGallaryApi";
+import { useGetAllVideoGalleryCategoriesQuery } from "@/src/redux/api/videoGallaryCategoryApi";
+import { extractYoutubeId } from "@/src/utils/youtube";
 
-const categories = [
+const defaultCategories = [
   "All",
   "Paint Jobs",
   "Restorations",
@@ -14,12 +17,9 @@ const categories = [
   "Accessories",
 ] as const;
 
-type Category = (typeof categories)[number];
+type Reel = { category: string; youtubeId: string };
 
-const reels: {
-  category: Exclude<Category, "All">;
-  youtubeId: string;
-}[] = [
+const defaultReels: Reel[] = [
   { category: "Paint Jobs", youtubeId: "1visjcVXXtM" },
   { category: "Paint Jobs", youtubeId: "9VQfJQU6S9U" },
   { category: "Paint Jobs", youtubeId: "CmeyAlIT7uc" },
@@ -101,9 +101,38 @@ function VideoModal({
 }
 
 export default function Gallery() {
-  const [activeCategory, setActiveCategory] = useState<Category>("All");
+  const [activeCategory, setActiveCategory] = useState<string>("All");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [openVideoId, setOpenVideoId] = useState<string | null>(null);
+
+  const { data: categoryData } = useGetAllVideoGalleryCategoriesQuery({
+    limit: 100,
+  });
+  const { data: videoData } = useGetAllVideoGallariesQuery({
+    is_active: true,
+    limit: 100,
+  });
+
+  const fetchedCategories = (categoryData?.data || []).filter(
+    (c) => c.is_active !== false,
+  );
+  const fetchedVideos = videoData?.data || [];
+
+  const reels: Reel[] = useMemo(() => {
+    if (fetchedVideos.length === 0) return defaultReels;
+
+    return fetchedVideos
+      .map((v) => ({
+        category: v.videoGallaryCategory?.title || "Uncategorized",
+        youtubeId: extractYoutubeId(v.video_url),
+      }))
+      .filter((r): r is Reel => Boolean(r.youtubeId));
+  }, [fetchedVideos]);
+
+  const categories: string[] =
+    fetchedCategories.length > 0
+      ? ["All", ...fetchedCategories.map((c) => c.title || "Uncategorized")]
+      : [...defaultCategories];
 
   const filteredReels =
     activeCategory === "All"
@@ -113,7 +142,7 @@ export default function Gallery() {
   const visibleReels = filteredReels.slice(0, visibleCount);
   const hasMore = visibleCount < filteredReels.length;
 
-  const selectCategory = (category: Category) => {
+  const selectCategory = (category: string) => {
     setActiveCategory(category);
     setVisibleCount(PAGE_SIZE);
   };

@@ -1,4 +1,5 @@
 import {
+  Car,
   FileText,
   HelpCircle,
   Layers,
@@ -31,6 +32,7 @@ export const menuIconMap: Record<string, LucideIcon> = {
   ShieldCheck,
   UserCircle,
   PanelTop,
+  Car,
 };
 
 export const resolveMenuIcon = (icon?: string): LucideIcon | undefined =>

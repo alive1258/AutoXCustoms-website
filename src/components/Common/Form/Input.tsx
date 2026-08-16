@@ -31,7 +31,7 @@ const Input = ({
   return (
     <div>
       {/* Label */}
-      <label className="block text-sm font-medium mb-1">
+      <label className="block text-sm text-gray-400 font-medium mb-1">
         {label}
         {required && <span className="ml-1 text-red-500">*</span>}
       </label>
@@ -44,7 +44,7 @@ const Input = ({
           autoComplete="off"
           readOnly={readOnly} // ✅ applied
           {...register}
-          className={`w-full px-3 py-2 rounded-md border focus:outline-none focus:ring-1 focus:ring-blue-400 ${"bg-white border-gray-300 text-gray-900"} ${readOnly ? "opacity-70 cursor-not-allowed" : ""}`} // ✅ UI feedback
+          className={`w-full px-3 py-2 rounded-md border focus:outline-none focus:ring-1 focus:ring-blue-400 ${"bg-white border-gray-700 text-gray-500"} ${readOnly ? "opacity-70 cursor-not-allowed" : ""}`} // ✅ UI feedback
         />
 
         {/* Password toggle */}

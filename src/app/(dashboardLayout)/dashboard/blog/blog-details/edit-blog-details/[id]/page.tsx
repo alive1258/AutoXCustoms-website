@@ -1,4 +1,4 @@
-import EditBlogDetails from "@/src/components/Dashboard/Blog/BlogDetails/EditBlogDetails";
+import EditBlogDetails from "@/src/components/Ui/Dashboard/Blog/BlogDetails/EditBlogDetails";
 
 interface PageProps {
   params: Promise<{

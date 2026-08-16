@@ -103,7 +103,7 @@ const AllEmployees: React.FC = () => {
     <div className="rounded-lg border border-gray-200 bg-white overflow-hidden">
       <div className="flex items-center justify-between p-6 border-b border-gray-200">
         <div>
-          <h1 className="text-lg font-semibold text-gray-900">Employees</h1>
+          <h1 className="text-lg font-semibold text-gray-200">Employees</h1>
           <p className="text-sm text-gray-500">
             Staff accounts with dashboard access
           </p>
@@ -122,7 +122,10 @@ const AllEmployees: React.FC = () => {
       {isLoading ? (
         <div className="p-6 space-y-3">
           {[...Array(5)].map((_, i) => (
-            <div key={i} className="h-12 bg-gray-100 rounded-lg animate-pulse" />
+            <div
+              key={i}
+              className="h-12 bg-gray-100 rounded-lg animate-pulse"
+            />
           ))}
         </div>
       ) : employees.length === 0 ? (
@@ -156,7 +159,7 @@ const AllEmployees: React.FC = () => {
                     <td className="px-6 py-3 font-mono text-xs text-gray-600">
                       {employee.staff_code}
                     </td>
-                    <td className="px-6 py-3 text-gray-900">
+                    <td className="px-6 py-3 text-gray-200">
                       {employee.user?.name || "—"}
                     </td>
                     <td className="px-6 py-3 text-gray-600">
@@ -193,7 +196,7 @@ const AllEmployees: React.FC = () => {
                               : "Only Super Admin can change account status"
                           }
                           className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
-                            isActive ? "bg-emerald-500" : "bg-gray-300"
+                            isActive ? "bg-red-500" : "bg-gray-300"
                           }`}
                         >
                           <span
@@ -204,7 +207,7 @@ const AllEmployees: React.FC = () => {
                         </button>
                         <span
                           className={`text-xs font-medium ${
-                            isActive ? "text-emerald-700" : "text-red-600"
+                            isActive ? "text-red-700" : "text-gray-500"
                           }`}
                         >
                           {isActive ? "Active" : "Deactivated"}

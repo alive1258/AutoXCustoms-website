@@ -8,7 +8,10 @@ import { useDebounce } from "@/src/hooks/useDebounce";
 import { Role } from "@/src/types/roleType";
 import { ApiError } from "@/src/types/authType";
 import Pagination from "@/src/utils/Pagination";
-import { useDeleteRoleMutation, useGetAllRolesQuery } from "@/src/redux/api/rolesApi";
+import {
+  useDeleteRoleMutation,
+  useGetAllRolesQuery,
+} from "@/src/redux/api/rolesApi";
 
 const LIMIT = 10;
 
@@ -90,9 +93,9 @@ const AllRoles: React.FC = () => {
       {/* Header Controls */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 p-6 border-b border-gray-200">
         <div className="flex items-center gap-2">
-          <Shield className="h-6 w-6 text-emerald-600" />
+          <Shield className="h-6 w-6 text-red-600" />
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900">Roles</h1>
+            <h1 className="text-2xl font-semibold text-gray-200">Roles</h1>
             <p className="text-sm text-gray-500">
               Manage dashboard roles and their permissions
             </p>
@@ -105,11 +108,11 @@ const AllRoles: React.FC = () => {
             placeholder="Search roles..."
             value={searchValue}
             onChange={handleSearchChange}
-            className="w-full sm:w-72 rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-emerald-600"
+            className="w-full sm:w-72 rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-red-600"
           />
 
           <Link href="/dashboard/roles/add-role">
-            <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-white hover:bg-emerald-700 transition w-full sm:w-auto">
+            <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transition w-full sm:w-auto">
               <Plus size={18} />
               Add Role
             </button>
@@ -180,7 +183,7 @@ const AllRoles: React.FC = () => {
                     <div className="flex justify-center gap-2">
                       <Link href={`/dashboard/roles/edit-role/${role.id}`}>
                         <button
-                          className="rounded-lg p-2 cursor-pointer text-emerald-600 hover:bg-emerald-100 transition"
+                          className="rounded-lg p-2 cursor-pointer text-red-600 hover:bg-red-100 transition"
                           title="Edit"
                         >
                           <Edit size={18} />

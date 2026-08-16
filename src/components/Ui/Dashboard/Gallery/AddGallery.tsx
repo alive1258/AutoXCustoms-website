@@ -142,7 +142,7 @@ const AddGallery = () => {
               id="is_active"
               type="checkbox"
               {...register("is_active")}
-              className="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+              className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
             />
             <label htmlFor="is_active" className="text-sm font-medium text-gray-700">
               Active (visible on homepage)
@@ -162,7 +162,7 @@ const AddGallery = () => {
               {...register("description", {
                 required: "Description is required",
               })}
-              className={`w-full rounded-lg border px-3.5 py-2.5 text-sm outline-none transition focus:ring-2 focus:ring-emerald-600 focus:border-transparent bg-white ${
+              className={`w-full rounded-lg border px-3.5 py-2.5 text-sm outline-none transition focus:ring-2 focus:ring-red-600 focus:border-transparent bg-white ${
                 errors.description ? "border-red-400" : "border-gray-300"
               }`}
             />
@@ -174,7 +174,7 @@ const AddGallery = () => {
           </div>
 
           {/* Multiple Image Upload & Preview */}
-          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-emerald-500 transition">
+          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-red-500 transition">
             <label className="block mb-2 font-semibold text-sm text-gray-700">
               Gallery Images
             </label>
@@ -227,9 +227,9 @@ const AddGallery = () => {
               file:rounded-full
               file:border-0
               file:font-semibold
-              file:bg-emerald-50
-              file:text-emerald-700
-              hover:file:bg-emerald-100"
+              file:bg-red-50
+              file:text-red-700
+              hover:file:bg-red-100"
             />
           </div>
         </div>

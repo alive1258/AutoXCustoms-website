@@ -130,7 +130,7 @@ const AllBlogDetails: React.FC = () => {
       {/* Header Controls */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 p-6 border-b border-gray-200">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">
+          <h1 className="text-2xl font-semibold text-gray-200">
             Blog Sections
           </h1>
           <p className="text-sm text-gray-500">
@@ -144,11 +144,11 @@ const AllBlogDetails: React.FC = () => {
             placeholder="Search sections..."
             value={searchValue}
             onChange={handleSearchChange}
-            className="w-full sm:w-72 rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-emerald-600"
+            className="w-full sm:w-72 rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-red-600"
           />
 
           <Link href="/dashboard/blog/blog-details/add-blog-details">
-            <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-white hover:bg-emerald-700 transition">
+            <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transition">
               <Plus size={18} />
               Add Section
             </button>
@@ -192,13 +192,13 @@ const AllBlogDetails: React.FC = () => {
                       <td className="px-5 py-3 text-sm">
                         {(currentPage - 1) * LIMIT + groupIndex + 1}
                       </td>
-                      <td className="px-5 py-3 text-sm font-semibold text-emerald-700">
+                      <td className="px-5 py-3 text-sm font-semibold text-red-700">
                         {group.blog_title}
                       </td>
                       <td className="px-5 py-3">
                         <button
                           onClick={() => toggleBlog(group.blog_id)}
-                          className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition cursor-pointer"
+                          className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-200 transition cursor-pointer"
                         >
                           {isExpanded ? (
                             <ChevronDown size={16} />
@@ -213,7 +213,7 @@ const AllBlogDetails: React.FC = () => {
                         </button>
                       </td>
                       <td className="px-5 py-3 text-center">
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
                           {totalSections}
                         </span>
                       </td>
@@ -221,7 +221,7 @@ const AllBlogDetails: React.FC = () => {
                         <Link
                           href={`/dashboard/blog/blog-details/add-blog-details?blog_id=${group.blog_id}`}
                         >
-                          <button className="rounded-lg bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-100 transition cursor-pointer">
+                          <button className="rounded-lg bg-red-50 px-3 py-1 text-xs font-medium text-red-700 hover:bg-red-100 transition cursor-pointer">
                             Add Section
                           </button>
                         </Link>
@@ -240,7 +240,7 @@ const AllBlogDetails: React.FC = () => {
                             <span className="text-xs text-gray-400 mr-2">
                               &#8627;
                             </span>
-                            <span className="font-mono text-xs text-emerald-700">
+                            <span className="font-mono text-xs text-red-700">
                               {item.section_key || "-"}
                             </span>
                           </td>
@@ -270,8 +270,8 @@ const AllBlogDetails: React.FC = () => {
                             <span
                               className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                                 item.status
-                                  ? "bg-emerald-100 text-emerald-800"
-                                  : "bg-red-100 text-red-800"
+                                  ? "bg-red-100 text-red-800"
+                                  : "bg-gray-100 text-gray-600"
                               }`}
                             >
                               {item.status ? "Active" : "Inactive"}
@@ -283,7 +283,7 @@ const AllBlogDetails: React.FC = () => {
                                 href={`/dashboard/blog/blog-details/edit-blog-details/${item.id}`}
                               >
                                 <button
-                                  className="rounded-lg p-2 cursor-pointer text-emerald-600 hover:bg-emerald-100 transition"
+                                  className="rounded-lg p-2 cursor-pointer text-red-600 hover:bg-red-100 transition"
                                   title="Edit"
                                 >
                                   <Edit size={18} />

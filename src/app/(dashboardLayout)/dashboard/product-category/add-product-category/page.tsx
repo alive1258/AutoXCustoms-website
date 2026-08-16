@@ -1,4 +1,4 @@
-import AddProductCategory from "@/src/components/Dashboard/Products/ProductCategory/AddProductCategory";
+import AddProductCategory from "@/src/components/Ui/Dashboard/Products/ProductCategory/AddProductCategory";
 
 const page = () => {
   return (

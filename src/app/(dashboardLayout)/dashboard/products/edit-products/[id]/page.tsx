@@ -1,4 +1,4 @@
-import EditProducts from "@/src/components/Dashboard/Products/Product/EditProducts";
+import EditProducts from "@/src/components/Ui/Dashboard/Products/Product/EditProducts";
 
 interface PageProps {
   params: Promise<{

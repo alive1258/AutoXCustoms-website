@@ -1,4 +1,4 @@
-import AllOrders from "@/src/components/Dashboard/Orders/AllOrders";
+import AllOrders from "@/src/components/Ui/Dashboard/Orders/AllOrders";
 
 const Page = () => {
   return <AllOrders />;

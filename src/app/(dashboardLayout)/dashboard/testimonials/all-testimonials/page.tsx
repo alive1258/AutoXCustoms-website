@@ -1,4 +1,4 @@
-import AllTestimonials from "@/src/components/Dashboard/Testimonials/AllTestimonials";
+import AllTestimonials from "@/src/components/Ui/Dashboard/Testimonials/AllTestimonials";
 
 const page = () => {
   return (

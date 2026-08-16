@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import {
   MapPin,
@@ -10,14 +12,36 @@ import {
 } from "lucide-react";
 import SlideLeft from "@/src/components/Common/Animaation/SlideLeft";
 import SlideRight from "@/src/components/Common/Animaation/SlideRight";
+import { useGetActiveAboutQuery } from "@/src/redux/api/aboutApi";
+import { resolveStatIcon } from "@/src/utils/statIconMap";
 
-const pillars = [
+const defaultPillars = [
   { icon: SprayCan, label: "Paint" },
   { icon: Wrench, label: "Restoration" },
   { icon: Sparkles, label: "Customization" },
 ];
 
 export default function About() {
+  const { data } = useGetActiveAboutQuery();
+  const about = data?.data;
+
+  const eyebrow = about?.eyebrow || "About AutoXCustoms";
+  const headline = about?.title || "Craftsmanship Behind Every Finish";
+  const paragraph =
+    about?.bio?.[0] ||
+    "AutoXCustoms is a Dhaka-based workshop specializing in paint, restoration, and customization. Every vehicle that comes through our bay is treated as a craft project, not a queue number — built with the patience and precision that turn a good job into a lasting one.";
+  const quote =
+    about?.bio?.[1] ||
+    "A proper paint job isn't just color — it's preparation, the right materials, and a factory-grade finish.";
+  const image = about?.image || "/images/services/diagnostics.jpg";
+  const pillars =
+    about?.info && about.info.length > 0
+      ? about.info.map((item) => ({
+          icon: resolveStatIcon(item.icon),
+          label: item.label,
+        }))
+      : defaultPillars;
+
   return (
     <section
       id="about"
@@ -30,25 +54,20 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
           <SlideLeft>
             <span className="text-red-500 font-semibold text-sm tracking-wide uppercase">
-              About AutoXCustoms
+              {eyebrow}
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mt-3 leading-tight">
-              Craftsmanship Behind Every Finish
+              {headline}
             </h2>
 
             <p className="text-gray-300 text-lg leading-relaxed mt-6">
-              AutoXCustoms is a Dhaka-based workshop specializing in paint,
-              restoration, and customization. Every vehicle that comes through
-              our bay is treated as a craft project, not a queue number — built
-              with the patience and precision that turn a good job into a
-              lasting one.
+              {paragraph}
             </p>
 
             <div className="mt-8 border-l-2 border-red-600 pl-5 sm:pl-6 relative">
               <Quote className="w-6 h-6 text-red-600/40 absolute -left-3 -top-1 bg-surface-1" />
               <p className="text-white text-lg sm:text-xl font-medium leading-relaxed italic">
-                A proper paint job isn&apos;t just color — it&apos;s
-                preparation, the right materials, and a factory-grade finish.
+                {quote}
               </p>
             </div>
 
@@ -67,11 +86,12 @@ export default function About() {
             <div className="relative">
               <div className="relative h-72 sm:h-96 lg:h-[26rem] rounded-2xl overflow-hidden border border-white/10">
                 <Image
-                  src="/images/services/diagnostics.jpg"
+                  src={image}
                   alt="AutoXCustoms technician servicing a vehicle"
                   fill
                   sizes="(min-width: 1024px) 560px, 100vw"
                   className="object-cover"
+                  unoptimized={image.startsWith("http")}
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-surface-1 via-black/10 to-transparent" />
                 <p className="absolute bottom-4 left-5 right-5 text-white text-sm font-medium">
@@ -96,9 +116,9 @@ export default function About() {
 
             <div className="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 mt-10 sm:mt-9">
               <div className="grid grid-cols-3 gap-2.5 sm:gap-3">
-                {pillars.map(({ icon: Icon, label }) => (
+                {pillars.map(({ icon: Icon, label }, idx) => (
                   <div
-                    key={label}
+                    key={`${label}-${idx}`}
                     className="flex flex-col items-center text-center gap-2 py-3 px-1 rounded-xl border border-white/10 bg-white/5"
                   >
                     <div className="w-9 h-9 rounded-full bg-red-600/15 flex items-center justify-center text-red-500 shrink-0">

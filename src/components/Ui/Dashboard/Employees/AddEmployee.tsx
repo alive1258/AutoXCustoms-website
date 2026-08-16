@@ -28,7 +28,9 @@ const AddEmployee: React.FC = () => {
   const router = useRouter();
   // Employee creation is Super-Admin-exclusive (matches backend's
   // @SuperAdminOnly()), not gated by the "employees" menu's create toggle.
-  const isSuperAdmin = useAppSelector((state) => state.auth.roleInfo?.isSuperAdmin);
+  const isSuperAdmin = useAppSelector(
+    (state) => state.auth.roleInfo?.isSuperAdmin,
+  );
   const canCreate = !!isSuperAdmin;
   const [showPassword, setShowPassword] = useState(false);
   const [createEmployee, { isLoading }] = useCreateEmployeeMutation();
@@ -100,9 +102,7 @@ const AddEmployee: React.FC = () => {
         Back to employees
       </Link>
 
-      <h1 className="text-lg font-semibold text-gray-900 mb-1">
-        Add Employee
-      </h1>
+      <h1 className="text-lg font-semibold text-gray-200 mb-1">Add Employee</h1>
       <p className="text-sm text-gray-500 mb-6">
         Only super_admin can create staff accounts. New accounts are
         pre-verified and can sign in immediately.
@@ -174,8 +174,7 @@ const AddEmployee: React.FC = () => {
               {...register("password", {
                 required: "Password is required",
                 pattern: {
-                  value:
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/,
+                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/,
                   message:
                     "Min 8 characters with uppercase, lowercase, number & special character",
                 },

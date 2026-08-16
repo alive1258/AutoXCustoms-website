@@ -1,4 +1,4 @@
-import CreateOrder from "@/src/components/Dashboard/Orders/CreateOrder";
+import CreateOrder from "@/src/components/Ui/Dashboard/Orders/CreateOrder";
 
 const Page = () => {
   return <CreateOrder />;

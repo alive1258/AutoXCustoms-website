@@ -1,4 +1,4 @@
-import EditTestimonials from "@/src/components/Dashboard/Testimonials/EditTestimonials";
+import EditTestimonials from "@/src/components/Ui/Dashboard/Testimonials/EditTestimonials";
 
 interface PageProps {
   params: Promise<{

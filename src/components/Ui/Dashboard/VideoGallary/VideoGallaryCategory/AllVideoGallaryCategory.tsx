@@ -93,7 +93,7 @@ const AllVideoGallaryCategory: React.FC = () => {
     <div className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 p-6 border-b border-gray-200">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">
+          <h1 className="text-2xl font-semibold text-gray-200">
             Video Gallery Categories
           </h1>
           <p className="text-sm text-gray-500">
@@ -107,11 +107,11 @@ const AllVideoGallaryCategory: React.FC = () => {
             placeholder="Search category..."
             value={searchValue}
             onChange={handleSearchChange}
-            className="w-full sm:w-72 rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-emerald-600"
+            className="w-full sm:w-72 rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-red-600"
           />
 
           <Link href="/dashboard/video-gallary-category/add-video-gallary-categories">
-            <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-white hover:bg-emerald-600 transition">
+            <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-600 transition">
               <Plus size={18} />
               Add Category
             </button>
@@ -178,7 +178,7 @@ const AllVideoGallaryCategory: React.FC = () => {
                         href={`/dashboard/video-gallary-category/edit-video-gallary-categories/${category.id}`}
                       >
                         <button
-                          className="rounded-lg p-2 cursor-pointer text-emerald-600 hover:bg-emerald-100 transition"
+                          className="rounded-lg p-2 cursor-pointer text-red-600 hover:bg-red-100 transition"
                           title="Edit"
                         >
                           <Edit size={18} />

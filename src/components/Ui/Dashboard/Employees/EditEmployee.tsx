@@ -72,14 +72,17 @@ const EditEmployee: React.FC<Props> = ({ id }) => {
         Back to employees
       </Link>
 
-      <h1 className="text-lg font-semibold text-gray-900 mb-1">
+      <h1 className="text-lg font-semibold text-gray-200 mb-1">
         Edit Employee
       </h1>
 
       {isLoadingEmployee ? (
         <div className="mt-6 space-y-3">
           {[...Array(3)].map((_, i) => (
-            <div key={i} className="h-10 bg-gray-100 rounded-lg animate-pulse" />
+            <div
+              key={i}
+              className="h-10 bg-gray-100 rounded-lg animate-pulse"
+            />
           ))}
         </div>
       ) : !employee ? (

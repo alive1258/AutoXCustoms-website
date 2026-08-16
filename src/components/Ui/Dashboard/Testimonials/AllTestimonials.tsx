@@ -92,7 +92,7 @@ const AllTestimonials: React.FC = () => {
       {/* Header Controls */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 p-6 border-b border-gray-200">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Testimonials</h1>
+          <h1 className="text-2xl font-semibold text-gray-200">Testimonials</h1>
           <p className="text-sm text-gray-500">
             Manage client reviews and testimonials
           </p>
@@ -104,11 +104,11 @@ const AllTestimonials: React.FC = () => {
             placeholder="Search testimonials..."
             value={searchValue}
             onChange={handleSearchChange}
-            className="w-full sm:w-72 rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-emerald-600"
+            className="w-full sm:w-72 rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-red-600"
           />
 
           <Link href="/dashboard/testimonials/add-testimonials">
-            <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-white hover:bg-emerald-700 transition w-full sm:w-auto">
+            <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transition w-full sm:w-auto">
               <Plus size={18} />
               Add Testimonial
             </button>
@@ -172,7 +172,7 @@ const AllTestimonials: React.FC = () => {
                         className="h-10 w-10 rounded-full border object-cover"
                       />
                     ) : (
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-800">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-100 text-xs font-bold text-red-800">
                         {testimonial.name?.charAt(0).toUpperCase() || "C"}
                       </div>
                     )}
@@ -204,7 +204,7 @@ const AllTestimonials: React.FC = () => {
                     <span
                       className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${
                         testimonial.is_active
-                          ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                          ? "bg-red-50 text-red-700 border-red-200"
                           : "bg-gray-50 text-gray-500 border-gray-200"
                       }`}
                     >
@@ -222,7 +222,7 @@ const AllTestimonials: React.FC = () => {
                         href={`/dashboard/testimonials/edit-testimonials/${testimonial.id}`}
                       >
                         <button
-                          className="rounded-lg p-2 cursor-pointer text-emerald-600 hover:bg-emerald-100 transition"
+                          className="rounded-lg p-2 cursor-pointer text-red-600 hover:bg-red-100 transition"
                           title="Edit"
                         >
                           <Edit size={18} />

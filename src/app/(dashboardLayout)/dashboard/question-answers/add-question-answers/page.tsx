@@ -1,4 +1,4 @@
-import AddQuestionAnswer from "@/src/components/Dashboard/QuestionAnswer/AddQuestionAnswer";
+import AddQuestionAnswer from "@/src/components/Ui/Dashboard/QuestionAnswer/AddQuestionAnswer";
 
 const page = () => {
   return (

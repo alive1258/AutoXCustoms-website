@@ -1,4 +1,4 @@
-import EditBlogCategory from "@/src/components/Dashboard/Blog/BlogCategory/EditBlogCategory";
+import EditBlogCategory from "@/src/components/Ui/Dashboard/Blog/BlogCategory/EditBlogCategory";
 
 interface PageProps {
   params: Promise<{

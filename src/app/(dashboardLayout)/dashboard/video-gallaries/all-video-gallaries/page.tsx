@@ -1,4 +1,4 @@
-import AllVideoGallaries from "@/src/components/Dashboard/VideoGallary/VideoGallaries/AllVideoGallaries";
+import AllVideoGallaries from "@/src/components/Ui/Dashboard/VideoGallary/VideoGallaries/AllVideoGallaries";
 
 const page = () => {
   return (

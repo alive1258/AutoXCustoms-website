@@ -139,7 +139,7 @@ const EditVideoGallaryCategory: React.FC<EditVideoGallaryCategoryProps> = ({
                 type="checkbox"
                 id="is_active"
                 {...register("is_active")}
-                className="h-5 w-5 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+                className="h-5 w-5 rounded border-gray-300 text-red-600 focus:ring-red-500 cursor-pointer"
               />
               <label
                 htmlFor="is_active"

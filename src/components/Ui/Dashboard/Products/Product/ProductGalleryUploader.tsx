@@ -54,7 +54,7 @@ const ProductGalleryUploader: React.FC<ProductGalleryUploaderProps> = ({
   };
 
   return (
-    <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-emerald-500 transition">
+    <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-red-500 transition">
       <div className="flex items-center justify-between mb-2">
         <label className="font-semibold text-sm text-gray-700">
           Gallery Images (Optional, up to {maxCount})
@@ -96,7 +96,7 @@ const ProductGalleryUploader: React.FC<ProductGalleryUploaderProps> = ({
           {previews.map((src, index) => (
             <div
               key={src}
-              className="relative h-20 w-20 overflow-hidden rounded-lg border border-emerald-300 bg-gray-50"
+              className="relative h-20 w-20 overflow-hidden rounded-lg border border-red-300 bg-gray-50"
             >
               <Image
                 src={src}

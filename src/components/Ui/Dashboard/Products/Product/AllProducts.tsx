@@ -95,7 +95,7 @@ const AllProducts: React.FC = () => {
       {/* Header Section */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 p-6 border-b border-gray-200">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Products</h1>
+          <h1 className="text-2xl font-semibold text-gray-200">Products</h1>
           <p className="text-sm text-gray-500">
             Manage all products in your inventory
           </p>
@@ -107,11 +107,11 @@ const AllProducts: React.FC = () => {
             placeholder="Search products..."
             value={searchValue}
             onChange={handleSearchChange}
-            className="w-full sm:w-72 rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-emerald-600"
+            className="w-full sm:w-72 rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-red-600"
           />
 
           <Link href="/dashboard/products/add-products">
-            <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-white hover:bg-emerald-700 transition w-full sm:w-auto">
+            <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transition w-full sm:w-auto">
               <Plus size={18} />
               Add Product
             </button>
@@ -223,7 +223,7 @@ const AllProducts: React.FC = () => {
                         href={`/dashboard/products/edit-products/${product.id}`}
                       >
                         <button
-                          className="rounded-lg p-2 cursor-pointer text-emerald-600 hover:bg-emerald-100 transition"
+                          className="rounded-lg p-2 cursor-pointer text-red-600 hover:bg-red-100 transition"
                           title="Edit"
                         >
                           <Edit size={18} />

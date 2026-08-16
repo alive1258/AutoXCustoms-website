@@ -127,13 +127,13 @@ const AddTestimonials = () => {
 
       <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Patient Name */}
+          {/* Customer Name */}
           <Input
-            label="Patient Name"
+            label="Customer Name"
             text="name"
             placeholder="Rahim"
             register={register("name", {
-              required: "Patient name is required",
+              required: "Customer name is required",
             })}
             errors={errors}
           />
@@ -142,7 +142,7 @@ const AddTestimonials = () => {
           <Input
             label="Designation (Optional)"
             text="designation"
-            placeholder="Patient"
+            placeholder="Car Owner"
             register={register("designation")}
             errors={errors}
             required={false}
@@ -207,7 +207,7 @@ const AddTestimonials = () => {
               id="is_active"
               type="checkbox"
               {...register("is_active")}
-              className="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+              className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
             />
             <label htmlFor="is_active" className="text-sm font-medium text-gray-700">
               Active (visible on homepage)
@@ -229,16 +229,16 @@ const AddTestimonials = () => {
           />
 
           {/* Image Upload & Preview */}
-          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-emerald-500 transition">
+          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-red-500 transition">
             <label className="block mb-2 font-semibold text-sm text-gray-700">
-              Patient Photo
+              Customer Photo
             </label>
 
             {imagePreview && (
               <div className="relative mb-4 h-32 w-32 overflow-hidden rounded-full border border-gray-200 bg-gray-50">
                 <Image
                   src={imagePreview}
-                  alt="Patient Photo Preview"
+                  alt="Customer Photo Preview"
                   fill
                   className="object-cover"
                 />
@@ -256,9 +256,9 @@ const AddTestimonials = () => {
               file:rounded-full
               file:border-0
               file:font-semibold
-              file:bg-emerald-50
-              file:text-emerald-700
-              hover:file:bg-emerald-100"
+              file:bg-red-50
+              file:text-red-700
+              hover:file:bg-red-100"
             />
           </div>
         </div>

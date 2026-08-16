@@ -32,7 +32,7 @@ function CustomTooltip({
   return (
     <div className="rounded-lg border border-black/10 bg-white px-3 py-2 shadow-md">
       <p className="text-xs font-semibold text-gray-500">{label}</p>
-      <p className="text-sm font-bold text-gray-900">
+      <p className="text-sm font-bold text-gray-200">
         ৳{payload[0].value.toLocaleString()}
       </p>
     </div>
@@ -75,7 +75,7 @@ export default function RevenueTrendChart({
   if (!hasRevenue) {
     return (
       <div className="flex-1 min-h-55 flex flex-col items-center justify-center text-center p-8">
-        <p className="text-gray-900 font-bold text-sm">No revenue yet</p>
+        <p className="text-gray-200 font-bold text-sm">No revenue yet</p>
         <p className="text-xs text-gray-500 mt-1">
           Revenue from the last {days} days will appear here.
         </p>
@@ -86,7 +86,10 @@ export default function RevenueTrendChart({
   return (
     <div className="flex-1 min-h-55 w-full">
       <ResponsiveContainer width="100%" height="100%" minHeight={220}>
-        <AreaChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+        <AreaChart
+          data={data}
+          margin={{ top: 8, right: 8, left: 0, bottom: 0 }}
+        >
           <defs>
             <linearGradient id="revenueFill" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor={CHART_BLUE} stopOpacity={0.35} />
@@ -122,7 +125,12 @@ export default function RevenueTrendChart({
             stroke={CHART_BLUE}
             strokeWidth={2}
             fill="url(#revenueFill)"
-            activeDot={{ r: 4, fill: CHART_BLUE, stroke: "#fff", strokeWidth: 2 }}
+            activeDot={{
+              r: 4,
+              fill: CHART_BLUE,
+              stroke: "#fff",
+              strokeWidth: 2,
+            }}
           />
         </AreaChart>
       </ResponsiveContainer>

@@ -92,9 +92,7 @@ const AllServices: React.FC = () => {
       {/* Header Controls */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 p-6 border-b border-gray-200">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">
-            Our Services
-          </h1>
+          <h1 className="text-2xl font-semibold text-gray-200">Our Services</h1>
           <p className="text-sm text-gray-500">
             Manage the homepage services list
           </p>
@@ -106,11 +104,11 @@ const AllServices: React.FC = () => {
             placeholder="Search services..."
             value={searchValue}
             onChange={handleSearchChange}
-            className="w-full sm:w-72 rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-emerald-600"
+            className="w-full sm:w-72 rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-red-600"
           />
 
           <Link href="/dashboard/services/add-service">
-            <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-white hover:bg-emerald-700 transition w-full sm:w-auto">
+            <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transition w-full sm:w-auto">
               <Plus size={18} />
               Add Service
             </button>
@@ -193,7 +191,7 @@ const AllServices: React.FC = () => {
                     <span
                       className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${
                         service.is_active
-                          ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                          ? "bg-red-50 text-red-700 border-red-200"
                           : "bg-gray-50 text-gray-500 border-gray-200"
                       }`}
                     >
@@ -211,7 +209,7 @@ const AllServices: React.FC = () => {
                         href={`/dashboard/services/edit-service/${service.id}`}
                       >
                         <button
-                          className="rounded-lg p-2 cursor-pointer text-emerald-600 hover:bg-emerald-100 transition"
+                          className="rounded-lg p-2 cursor-pointer text-red-600 hover:bg-red-100 transition"
                           title="Edit"
                         >
                           <Edit size={18} />

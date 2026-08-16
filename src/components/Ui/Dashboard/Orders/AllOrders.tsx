@@ -21,7 +21,10 @@ import {
 import { useDebounce } from "@/src/hooks/useDebounce";
 import { ApiError } from "@/src/types/authType";
 import Pagination from "@/src/utils/Pagination";
-import { downloadOrderInvoicePDF, downloadOrdersReportPDF } from "@/src/utils/orderPdf";
+import {
+  downloadOrderInvoicePDF,
+  downloadOrdersReportPDF,
+} from "@/src/utils/orderPdf";
 
 const LIMIT = 10;
 
@@ -43,13 +46,13 @@ const PAYMENT_STATUSES: NonNullable<IUpdateOrderDto["payment_status"]>[] = [
 const STATUS_BADGE: Record<string, string> = {
   pending: "bg-amber-100 text-amber-700",
   processing: "bg-blue-100 text-blue-700",
-  delivered: "bg-emerald-100 text-emerald-700",
+  delivered: "bg-green-100 text-green-700",
   cancelled: "bg-red-100 text-red-700",
 };
 
 const PAYMENT_BADGE: Record<string, string> = {
   pending: "bg-gray-100 text-gray-600",
-  paid: "bg-emerald-100 text-emerald-700",
+  paid: "bg-green-100 text-green-700",
   failed: "bg-red-100 text-red-700",
 };
 
@@ -110,14 +113,20 @@ const AllOrders: React.FC = () => {
     status: NonNullable<IUpdateOrderDto["order_status"]>,
   ) => {
     try {
-      await updateOrder({ id: order.id, data: { order_status: status } }).unwrap();
+      await updateOrder({
+        id: order.id,
+        data: { order_status: status },
+      }).unwrap();
       toast.success(`Order ${order.order_number} marked as ${status}`);
     } catch (err) {
       const apiError = err as ApiError;
       Swal.fire({
         icon: "error",
         title: "Update Failed",
-        text: apiError.data?.message || apiError.message || "Could not update order status.",
+        text:
+          apiError.data?.message ||
+          apiError.message ||
+          "Could not update order status.",
       });
     }
   };
@@ -127,14 +136,20 @@ const AllOrders: React.FC = () => {
     status: NonNullable<IUpdateOrderDto["payment_status"]>,
   ) => {
     try {
-      await updateOrder({ id: order.id, data: { payment_status: status } }).unwrap();
+      await updateOrder({
+        id: order.id,
+        data: { payment_status: status },
+      }).unwrap();
       toast.success(`Payment status updated for ${order.order_number}`);
     } catch (err) {
       const apiError = err as ApiError;
       Swal.fire({
         icon: "error",
         title: "Update Failed",
-        text: apiError.data?.message || apiError.message || "Could not update payment status.",
+        text:
+          apiError.data?.message ||
+          apiError.message ||
+          "Could not update payment status.",
       });
     }
   };
@@ -200,7 +215,10 @@ const AllOrders: React.FC = () => {
     return (
       <div className="rounded-lg border border-gray-200 bg-white p-6 space-y-3">
         {[...Array(LIMIT)].map((_, i) => (
-          <div key={i} className="h-12 w-full animate-pulse rounded-md bg-gray-200" />
+          <div
+            key={i}
+            className="h-12 w-full animate-pulse rounded-md bg-gray-200"
+          />
         ))}
       </div>
     );
@@ -211,19 +229,24 @@ const AllOrders: React.FC = () => {
       {/* Header Controls */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 p-6 border-b border-gray-200">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Orders</h1>
-          <p className="text-sm text-gray-500">Manage customer orders and payments</p>
+          <h1 className="text-2xl font-semibold text-gray-200">Orders</h1>
+          <p className="text-sm text-gray-500">
+            Manage customer orders and payments
+          </p>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
           <div className="relative">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+            <Search
+              size={16}
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+            />
             <input
               type="text"
               placeholder="Search order, customer, phone..."
               value={searchValue}
               onChange={handleSearchChange}
-              className="w-full sm:w-64 rounded-lg border border-gray-300 pl-9 pr-4 py-2 outline-none focus:ring-2 focus:ring-emerald-600"
+              className="w-full sm:w-64 rounded-lg border border-gray-300 pl-9 pr-4 py-2 outline-none focus:ring-2 focus:ring-red-600"
             />
           </div>
 
@@ -233,7 +256,7 @@ const AllOrders: React.FC = () => {
               setStatusFilter(e.target.value);
               setCurrentPage(1);
             }}
-            className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-emerald-600 capitalize"
+            className="rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-red-600 capitalize"
           >
             <option value="">All Statuses</option>
             {ORDER_STATUSES.map((s) => (
@@ -260,13 +283,27 @@ const AllOrders: React.FC = () => {
           <thead className="bg-gray-100">
             <tr>
               <th className="px-5 py-3 text-left text-sm font-semibold text-gray-700 w-8"></th>
-              <th className="px-5 py-3 text-left text-sm font-semibold text-gray-700">Order</th>
-              <th className="px-5 py-3 text-left text-sm font-semibold text-gray-700">Customer</th>
-              <th className="px-5 py-3 text-left text-sm font-semibold text-gray-700">Date</th>
-              <th className="px-5 py-3 text-center text-sm font-semibold text-gray-700">Status</th>
-              <th className="px-5 py-3 text-center text-sm font-semibold text-gray-700">Payment</th>
-              <th className="px-5 py-3 text-right text-sm font-semibold text-gray-700">Amount</th>
-              <th className="px-5 py-3 text-center text-sm font-semibold text-gray-700">Actions</th>
+              <th className="px-5 py-3 text-left text-sm font-semibold text-gray-700">
+                Order
+              </th>
+              <th className="px-5 py-3 text-left text-sm font-semibold text-gray-700">
+                Customer
+              </th>
+              <th className="px-5 py-3 text-left text-sm font-semibold text-gray-700">
+                Date
+              </th>
+              <th className="px-5 py-3 text-center text-sm font-semibold text-gray-700">
+                Status
+              </th>
+              <th className="px-5 py-3 text-center text-sm font-semibold text-gray-700">
+                Payment
+              </th>
+              <th className="px-5 py-3 text-right text-sm font-semibold text-gray-700">
+                Amount
+              </th>
+              <th className="px-5 py-3 text-center text-sm font-semibold text-gray-700">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -278,16 +315,26 @@ const AllOrders: React.FC = () => {
                     <tr className="border-t border-gray-200 hover:bg-gray-50 transition">
                       <td className="px-5 py-3">
                         <button
-                          onClick={() => setExpandedId(isExpanded ? null : order.id)}
-                          className="cursor-pointer text-gray-400 hover:text-emerald-600"
+                          onClick={() =>
+                            setExpandedId(isExpanded ? null : order.id)
+                          }
+                          className="cursor-pointer text-gray-400 hover:text-red-600"
                           title={isExpanded ? "Collapse" : "View items"}
                         >
-                          {isExpanded ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+                          {isExpanded ? (
+                            <ChevronDown size={16} />
+                          ) : (
+                            <ChevronRight size={16} />
+                          )}
                         </button>
                       </td>
-                      <td className="px-5 py-3 text-sm font-bold text-gray-800">{order.order_number}</td>
+                      <td className="px-5 py-3 text-sm font-bold text-gray-800">
+                        {order.order_number}
+                      </td>
                       <td className="px-5 py-3 text-sm">
-                        <p className="font-medium text-gray-800">{order.customer_name}</p>
+                        <p className="font-medium text-gray-800">
+                          {order.customer_name}
+                        </p>
                         <p className="text-xs text-gray-400">{order.phone}</p>
                       </td>
                       <td className="px-5 py-3 text-sm text-gray-600 whitespace-nowrap">
@@ -299,11 +346,14 @@ const AllOrders: React.FC = () => {
                           onChange={(e) =>
                             handleStatusChange(
                               order,
-                              e.target.value as NonNullable<IUpdateOrderDto["order_status"]>,
+                              e.target.value as NonNullable<
+                                IUpdateOrderDto["order_status"]
+                              >,
                             )
                           }
                           className={`cursor-pointer rounded-full border-0 px-2.5 py-1 text-xs font-bold capitalize outline-none ${
-                            STATUS_BADGE[order.order_status] || "bg-gray-100 text-gray-600"
+                            STATUS_BADGE[order.order_status] ||
+                            "bg-gray-100 text-gray-600"
                           }`}
                         >
                           {ORDER_STATUSES.map((s) => (
@@ -319,11 +369,14 @@ const AllOrders: React.FC = () => {
                           onChange={(e) =>
                             handlePaymentStatusChange(
                               order,
-                              e.target.value as NonNullable<IUpdateOrderDto["payment_status"]>,
+                              e.target.value as NonNullable<
+                                IUpdateOrderDto["payment_status"]
+                              >,
                             )
                           }
                           className={`cursor-pointer rounded-full border-0 px-2.5 py-1 text-xs font-bold capitalize outline-none ${
-                            PAYMENT_BADGE[order.payment_status] || "bg-gray-100 text-gray-600"
+                            PAYMENT_BADGE[order.payment_status] ||
+                            "bg-gray-100 text-gray-600"
                           }`}
                         >
                           {PAYMENT_STATUSES.map((s) => (
@@ -333,7 +386,7 @@ const AllOrders: React.FC = () => {
                           ))}
                         </select>
                       </td>
-                      <td className="px-5 py-3 text-right text-sm font-extrabold text-emerald-600 whitespace-nowrap">
+                      <td className="px-5 py-3 text-right text-sm font-extrabold text-red-600 whitespace-nowrap">
                         ৳{Number(order.total_amount).toLocaleString()}
                       </td>
                       <td className="px-5 py-3">
@@ -367,9 +420,13 @@ const AllOrders: React.FC = () => {
                               </h4>
                               <div className="space-y-1.5">
                                 {order.items?.map((item, idx) => (
-                                  <div key={idx} className="flex justify-between text-sm">
+                                  <div
+                                    key={idx}
+                                    className="flex justify-between text-sm"
+                                  >
                                     <span className="text-gray-700">
-                                      {item.product_name} &times; {item.quantity}
+                                      {item.product_name} &times;{" "}
+                                      {item.quantity}
                                     </span>
                                     <span className="font-semibold text-gray-800">
                                       ৳{item.total_price}
@@ -392,9 +449,13 @@ const AllOrders: React.FC = () => {
                               <h4 className="mb-2 text-xs font-bold uppercase tracking-wider text-gray-500">
                                 Shipping &amp; Notes
                               </h4>
-                              <p className="text-sm text-gray-700">{order.address}</p>
+                              <p className="text-sm text-gray-700">
+                                {order.address}
+                              </p>
                               {order.notes && (
-                                <p className="mt-2 text-sm italic text-gray-500">&quot;{order.notes}&quot;</p>
+                                <p className="mt-2 text-sm italic text-gray-500">
+                                  &quot;{order.notes}&quot;
+                                </p>
                               )}
                             </div>
                           </div>

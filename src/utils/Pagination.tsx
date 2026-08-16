@@ -79,7 +79,7 @@ const Pagination: React.FC<PaginationProps> = ({
             {/* Total results badge */}
             <div className="flex items-center gap-1.5">
               <span className="text-gray-500">Total</span>
-              <span className="px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-lg font-mono font-bold border border-emerald-200">
+              <span className="px-2 py-0.5 bg-red-50 text-red-700 rounded-lg font-mono font-bold border border-red-200">
                 {totalResults}
               </span>
             </div>
@@ -123,7 +123,7 @@ const Pagination: React.FC<PaginationProps> = ({
                 disabled={isFetching}
                 className={`w-9 h-9 rounded-md text-sm font-medium transition-all cursor-pointer ${
                   currentPage === page
-                    ? "bg-emerald-600 text-white shadow-sm"
+                    ? "bg-red-600 text-white shadow-sm"
                     : "text-gray-600 hover:bg-gray-100 border border-transparent hover:border-gray-200"
                 }`}
               >

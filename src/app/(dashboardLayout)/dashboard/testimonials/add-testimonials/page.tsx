@@ -1,4 +1,4 @@
-import AddTestimonials from "@/src/components/Dashboard/Testimonials/AddTestimonials";
+import AddTestimonials from "@/src/components/Ui/Dashboard/Testimonials/AddTestimonials";
 
 const page = () => {
   return (

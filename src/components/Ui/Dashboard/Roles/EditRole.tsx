@@ -185,7 +185,7 @@ const EditRole: React.FC<Props> = ({ id }) => {
           Back to roles
         </Link>
 
-        <h1 className="text-lg font-semibold text-gray-900 mb-1">Edit Role</h1>
+        <h1 className="text-lg font-semibold text-gray-200 mb-1">Edit Role</h1>
 
         {isLoadingRole ? (
           <div className="mt-6 space-y-3">
@@ -238,7 +238,7 @@ const EditRole: React.FC<Props> = ({ id }) => {
 
       {role && (
         <div className="rounded-lg border border-gray-200 bg-white p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-1">
+          <h2 className="text-lg font-semibold text-gray-200 mb-1">
             Permissions
           </h2>
           <p className="text-sm text-gray-500 mb-4">
@@ -282,7 +282,7 @@ const EditRole: React.FC<Props> = ({ id }) => {
                         <div className="mb-3 flex items-center gap-2">
                           <span
                             className={`h-1.5 w-1.5 shrink-0 rounded-full ${
-                              rowHasAnyGrant ? "bg-emerald-500" : "bg-gray-300"
+                              rowHasAnyGrant ? "bg-red-500" : "bg-gray-300"
                             }`}
                           />
                           <h3
@@ -320,7 +320,7 @@ const EditRole: React.FC<Props> = ({ id }) => {
                   type="button"
                   onClick={handleSavePermissions}
                   disabled={isSavingPermissions || matrix.length === 0}
-                  className="mt-4 w-full sm:w-auto px-6 py-2.5 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="mt-4 w-full sm:w-auto px-6 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {isSavingPermissions ? "Saving..." : "Save Permissions"}
                 </button>
@@ -491,7 +491,7 @@ export default EditRole;
 //           Back to roles
 //         </Link>
 
-//         <h1 className="text-lg font-semibold text-gray-900 mb-1">Edit Role</h1>
+//         <h1 className="text-lg font-semibold text-gray-200 mb-1">Edit Role</h1>
 
 //         {isLoadingRole ? (
 //           <div className="mt-6 space-y-3">
@@ -544,7 +544,7 @@ export default EditRole;
 
 //       {role && (
 //         <div className="rounded-lg border border-gray-200 bg-white p-6">
-//           <h2 className="text-lg font-semibold text-gray-900 mb-1">
+//           <h2 className="text-lg font-semibold text-gray-200 mb-1">
 //             Permissions
 //           </h2>
 //           <p className="text-sm text-gray-500 mb-4">
@@ -633,7 +633,7 @@ export default EditRole;
 //                   type="button"
 //                   onClick={handleSavePermissions}
 //                   disabled={isSavingPermissions || matrix.length === 0}
-//                   className="mt-4 w-full sm:w-auto px-6 py-2.5 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+//                   className="mt-4 w-full sm:w-auto px-6 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
 //                 >
 //                   {isSavingPermissions ? "Saving..." : "Save Permissions"}
 //                 </button>

@@ -92,7 +92,7 @@ const AllGallery: React.FC = () => {
       {/* Header Controls */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 p-6 border-b border-gray-200">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Gallery</h1>
+          <h1 className="text-2xl font-semibold text-gray-200">Gallery</h1>
           <p className="text-sm text-gray-500">
             Manage the homepage gallery items
           </p>
@@ -104,11 +104,11 @@ const AllGallery: React.FC = () => {
             placeholder="Search gallery items..."
             value={searchValue}
             onChange={handleSearchChange}
-            className="w-full sm:w-72 rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-emerald-600"
+            className="w-full sm:w-72 rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-2 focus:ring-red-600"
           />
 
           <Link href="/dashboard/gallery/add-gallery">
-            <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-white hover:bg-emerald-700 transition w-full sm:w-auto">
+            <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transition w-full sm:w-auto">
               <Plus size={18} />
               Add Gallery Item
             </button>
@@ -170,7 +170,7 @@ const AllGallery: React.FC = () => {
                           className="h-10 w-10 rounded-lg border object-cover"
                         />
                         {item.images.length > 1 && (
-                          <span className="absolute -bottom-1.5 -right-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-emerald-600 px-1 text-[10px] font-semibold text-white border border-white">
+                          <span className="absolute -bottom-1.5 -right-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-600 px-1 text-[10px] font-semibold text-white border border-white">
                             +{item.images.length - 1}
                           </span>
                         )}
@@ -198,7 +198,7 @@ const AllGallery: React.FC = () => {
                     <span
                       className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${
                         item.is_active
-                          ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                          ? "bg-red-50 text-red-700 border-red-200"
                           : "bg-gray-50 text-gray-500 border-gray-200"
                       }`}
                     >
@@ -214,7 +214,7 @@ const AllGallery: React.FC = () => {
                     <div className="flex justify-center gap-2">
                       <Link href={`/dashboard/gallery/edit-gallery/${item.id}`}>
                         <button
-                          className="rounded-lg p-2 cursor-pointer text-emerald-600 hover:bg-emerald-100 transition"
+                          className="rounded-lg p-2 cursor-pointer text-red-600 hover:bg-red-100 transition"
                           title="Edit"
                         >
                           <Edit size={18} />

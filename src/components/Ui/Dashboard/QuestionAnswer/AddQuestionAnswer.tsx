@@ -113,7 +113,7 @@ const AddQuestionAnswer: React.FC = () => {
                   message: "Answer can contain a maximum of 500 characters.",
                 },
               })}
-              className="w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent text-sm transition"
+              className="w-full rounded-lg border border-gray-300 p-3 outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent text-sm transition"
             />
             {errors.answer && (
               <span className="text-xs text-red-500">

@@ -1,4 +1,4 @@
-import AddBlogCategory from "@/src/components/Dashboard/Blog/BlogCategory/AddBlogCategory";
+import AddBlogCategory from "@/src/components/Ui/Dashboard/Blog/BlogCategory/AddBlogCategory";
 
 const page = () => {
   return (

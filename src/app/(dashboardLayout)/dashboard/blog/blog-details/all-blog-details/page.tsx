@@ -1,4 +1,4 @@
-import AllBlogDetails from "@/src/components/Dashboard/Blog/BlogDetails/AllBlogDetails";
+import AllBlogDetails from "@/src/components/Ui/Dashboard/Blog/BlogDetails/AllBlogDetails";
 
 const Page = () => {
   return (

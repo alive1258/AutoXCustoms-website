@@ -237,7 +237,7 @@ const AddBlogDetails: React.FC<AddBlogDetailsProps> = ({ defaultBlogId }) => {
               <input
                 type="checkbox"
                 {...register("status")}
-                className="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
               />
               Active Status
             </label>
@@ -267,13 +267,13 @@ const AddBlogDetails: React.FC<AddBlogDetailsProps> = ({ defaultBlogId }) => {
                 {titles.map((title, index) => (
                   <span
                     key={`${title}-${index}`}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-100 px-3 py-1 text-xs font-medium text-emerald-700"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-red-50 border border-red-100 px-3 py-1 text-xs font-medium text-red-700"
                   >
                     {title}
                     <button
                       type="button"
                       onClick={() => handleRemoveTitle(index)}
-                      className="text-emerald-500 hover:text-emerald-700"
+                      className="text-red-500 hover:text-red-700"
                     >
                       <X size={12} />
                     </button>
@@ -294,7 +294,7 @@ const AddBlogDetails: React.FC<AddBlogDetailsProps> = ({ defaultBlogId }) => {
                   }
                 }}
                 placeholder="Add a TOC title entry"
-                className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
               />
               <button
                 type="button"
@@ -346,7 +346,7 @@ const AddBlogDetails: React.FC<AddBlogDetailsProps> = ({ defaultBlogId }) => {
                 value={bulletTitle}
                 onChange={(e) => setBulletTitle(e.target.value)}
                 placeholder="Bullet title (e.g. Real-time tracking)"
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
               />
               <input
                 type="text"
@@ -359,12 +359,12 @@ const AddBlogDetails: React.FC<AddBlogDetailsProps> = ({ defaultBlogId }) => {
                   }
                 }}
                 placeholder="Bullet description"
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
               />
               <button
                 type="button"
                 onClick={handleAddBullet}
-                className="flex items-center gap-1.5 text-sm font-medium text-emerald-600 hover:text-emerald-700"
+                className="flex items-center gap-1.5 text-sm font-medium text-red-600 hover:text-red-700"
               >
                 <Plus size={16} />
                 Add Bullet
@@ -373,7 +373,7 @@ const AddBlogDetails: React.FC<AddBlogDetailsProps> = ({ defaultBlogId }) => {
           </div>
 
           {/* Image Upload & Preview */}
-          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-emerald-500 transition">
+          <div className="col-span-full border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-red-500 transition">
             <label className="block mb-2 font-semibold text-sm text-gray-700">
               Section Image (Optional)
             </label>
@@ -400,9 +400,9 @@ const AddBlogDetails: React.FC<AddBlogDetailsProps> = ({ defaultBlogId }) => {
               file:rounded-full
               file:border-0
               file:font-semibold
-              file:bg-emerald-50
-              file:text-emerald-700
-              hover:file:bg-emerald-100"
+              file:bg-red-50
+              file:text-red-700
+              hover:file:bg-red-100"
             />
           </div>
         </div>

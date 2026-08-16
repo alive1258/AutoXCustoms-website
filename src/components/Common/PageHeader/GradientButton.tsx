@@ -22,7 +22,7 @@ const GradientButton: React.FC<GradientButtonProps> = ({
     <button
       type={type}
       disabled={disabled}
-      className={`cursor-pointer px-3 py-2.5 rounded-md text-sm flex items-center gap-2 transition-colors whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed ${"bg-linear-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700"} ${className}`}
+      className={`cursor-pointer px-3 py-2.5 rounded-md text-sm flex items-center gap-2 transition-colors whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed ${"bg-linear-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700"} ${className}`}
       {...rest}
     >
       {Icon && <Icon size={16} />}

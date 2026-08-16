@@ -1,4 +1,4 @@
-import AllBlogPost from "@/src/components/Dashboard/Blog/BlogPost/AllBlogPost";
+import AllBlogPost from "@/src/components/Ui/Dashboard/Blog/BlogPost/AllBlogPost";
 
 const page = () => {
   return (

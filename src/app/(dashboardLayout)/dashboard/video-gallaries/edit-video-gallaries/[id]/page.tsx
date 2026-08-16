@@ -1,4 +1,4 @@
-import EditVideoGallaries from "@/src/components/Dashboard/VideoGallary/VideoGallaries/EditVideoGallaries";
+import EditVideoGallaries from "@/src/components/Ui/Dashboard/VideoGallary/VideoGallaries/EditVideoGallaries";
 
 interface PageProps {
   params: Promise<{

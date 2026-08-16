@@ -1,4 +1,4 @@
-import AllVideoGallaryCategory from "@/src/components/Dashboard/VideoGallary/VideoGallaryCategory/AllVideoGallaryCategory";
+import AllVideoGallaryCategory from "@/src/components/Ui/Dashboard/VideoGallary/VideoGallaryCategory/AllVideoGallaryCategory";
 
 const page = () => {
   return (

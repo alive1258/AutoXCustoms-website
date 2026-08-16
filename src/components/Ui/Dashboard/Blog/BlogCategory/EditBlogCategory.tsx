@@ -145,7 +145,7 @@ const EditBlogCategory: React.FC<EditBlogCategoryProps> = ({ id }) => {
               type="checkbox"
               id="status"
               {...register("status")}
-              className="h-5 w-5 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
+              className="h-5 w-5 rounded border-gray-300 text-red-600 focus:ring-red-500 cursor-pointer"
             />
             <label
               htmlFor="status"

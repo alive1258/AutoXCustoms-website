@@ -1,4 +1,4 @@
-import AllQuestionAnswer from "@/src/components/Dashboard/QuestionAnswer/AllQuestionAnswer";
+import AllQuestionAnswer from "@/src/components/Ui/Dashboard/QuestionAnswer/AllQuestionAnswer";
 
 const page = () => {
   return (

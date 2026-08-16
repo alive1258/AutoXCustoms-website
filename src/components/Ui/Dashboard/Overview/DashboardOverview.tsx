@@ -62,7 +62,7 @@ function percentDelta(current: number, previous: number) {
 const STATUS_BADGE: Record<string, string> = {
   pending: "bg-amber-100 text-amber-700",
   processing: "bg-blue-100 text-blue-700",
-  delivered: "bg-emerald-100 text-emerald-700",
+  delivered: "bg-green-100 text-green-700",
   cancelled: "bg-red-100 text-red-700",
 };
 
@@ -107,15 +107,13 @@ const StatCard: React.FC<StatCardProps> = ({
         <div className="h-7 w-24 bg-gray-100 rounded animate-pulse" />
       ) : (
         <div className="flex items-center justify-between gap-2">
-          <span className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">
+          <span className="text-xl sm:text-2xl font-black text-gray-200 tracking-tight">
             {value}
           </span>
           {hasDelta && (
             <span
               className={`flex items-center gap-0.5 text-xs font-extrabold px-2 py-0.5 rounded-full shrink-0 ${
-                isUp
-                  ? "bg-emerald-50 text-emerald-700"
-                  : "bg-red-50 text-red-600"
+                isUp ? "bg-green-50 text-green-700" : "bg-red-50 text-red-600"
               }`}
             >
               {isUp ? <TrendingUp size={12} /> : <TrendingDown size={12} />}
@@ -149,7 +147,7 @@ const OverviewTile: React.FC<OverviewTileProps> = ({
 }) => (
   <Link
     href={href}
-    className="bg-white rounded-xl border border-gray-100 shadow-sm p-3.5 flex items-center gap-3 hover:border-emerald-200 hover:shadow-md transition-all"
+    className="bg-white rounded-xl border border-gray-100 shadow-sm p-3.5 flex items-center gap-3 hover:border-red-200 hover:shadow-md transition-all"
   >
     <div className="w-9 h-9 rounded-lg bg-gray-50 flex items-center justify-center shrink-0 text-gray-500">
       <Icon size={16} />
@@ -158,7 +156,7 @@ const OverviewTile: React.FC<OverviewTileProps> = ({
       {isLoading ? (
         <div className="h-4 w-10 bg-gray-100 rounded animate-pulse" />
       ) : (
-        <p className="text-base font-extrabold text-gray-900 leading-tight">
+        <p className="text-base font-extrabold text-gray-200 leading-tight">
           {value}
         </p>
       )}
@@ -240,7 +238,7 @@ export default function DashboardOverview() {
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-2">
         <div>
-          <h1 className="text-xl sm:text-2xl font-black text-gray-900">
+          <h1 className="text-xl sm:text-2xl font-black text-gray-200">
             Dashboard Overview
           </h1>
           <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
@@ -263,7 +261,7 @@ export default function DashboardOverview() {
           title="Total Revenue"
           value={`৳${totalRevenue.toLocaleString()}`}
           icon={Wallet}
-          iconBg="bg-emerald-600"
+          iconBg="bg-red-600"
           deltaPercent={orders.length > 0 ? revenueDelta : undefined}
           isLoading={ordersLoading}
         />
@@ -335,7 +333,7 @@ export default function DashboardOverview() {
         {/* Revenue Trend */}
         <div className="lg:col-span-2 bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col">
           <div className="mb-3">
-            <h2 className="text-base sm:text-lg font-extrabold text-gray-900">
+            <h2 className="text-base sm:text-lg font-extrabold text-gray-200">
               Revenue Trend
             </h2>
             <p className="text-xs font-medium text-gray-500">
@@ -352,7 +350,7 @@ export default function DashboardOverview() {
         {/* Order Status */}
         <div className="bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col">
           <div className="mb-3">
-            <h2 className="text-base sm:text-lg font-extrabold text-gray-900">
+            <h2 className="text-base sm:text-lg font-extrabold text-gray-200">
               Order Status
             </h2>
             <p className="text-xs font-medium text-gray-500">
@@ -371,7 +369,7 @@ export default function DashboardOverview() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         <div className="bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm">
           <div className="mb-3">
-            <h2 className="text-base sm:text-lg font-extrabold text-gray-900">
+            <h2 className="text-base sm:text-lg font-extrabold text-gray-200">
               Products by Category
             </h2>
             <p className="text-xs font-medium text-gray-500">
@@ -389,7 +387,7 @@ export default function DashboardOverview() {
         <div className="lg:col-span-2 bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm">
           <div className="flex items-center justify-between mb-3">
             <div>
-              <h2 className="text-base sm:text-lg font-extrabold text-gray-900">
+              <h2 className="text-base sm:text-lg font-extrabold text-gray-200">
                 Recent Orders
               </h2>
               <p className="text-xs font-medium text-gray-500">
@@ -409,7 +407,7 @@ export default function DashboardOverview() {
             </div>
           ) : recentOrders.length === 0 ? (
             <div className="py-10 text-center">
-              <p className="text-gray-900 font-bold text-sm">No orders yet</p>
+              <p className="text-gray-200 font-bold text-sm">No orders yet</p>
               <p className="text-xs text-gray-500 mt-1">
                 New orders will show up here as they come in.
               </p>
@@ -453,7 +451,7 @@ export default function DashboardOverview() {
                             {order.order_status}
                           </span>
                         </td>
-                        <td className="py-3 text-right font-extrabold text-emerald-600">
+                        <td className="py-3 text-right font-extrabold text-red-600">
                           ৳{Number(order.total_amount).toLocaleString()}
                         </td>
                       </tr>
@@ -473,7 +471,7 @@ export default function DashboardOverview() {
                       <span className="font-bold text-sm text-gray-800">
                         {order.order_number}
                       </span>
-                      <span className="font-extrabold text-sm text-emerald-600">
+                      <span className="font-extrabold text-sm text-red-600">
                         ৳{Number(order.total_amount).toLocaleString()}
                       </span>
                     </div>

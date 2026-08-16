@@ -16,7 +16,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, breadcrumbs }) => {
   return (
     <div className="mb-6">
       {/* Title */}
-      <h1 className="text-lg sm:text-3xl font-bold text-gray-900 wrap-break-word">
+      <h1 className="text-lg sm:text-3xl font-bold text-gray-200 wrap-break-word">
         {title}
       </h1>
 
@@ -29,12 +29,12 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, breadcrumbs }) => {
                 {breadcrumb.link ? (
                   <Link
                     href={breadcrumb.link}
-                    className="text-gray-500 hover:text-blue-600 hover:underline transition-colors"
+                    className="text-gray-500 hover:text-red-600 hover:underline transition-colors"
                   >
                     {breadcrumb.title}
                   </Link>
                 ) : (
-                  <span className="font-medium text-blue-600">
+                  <span className="font-medium text-red-600">
                     {breadcrumb.title}
                   </span>
                 )}

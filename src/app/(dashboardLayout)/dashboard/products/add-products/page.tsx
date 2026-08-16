@@ -1,4 +1,4 @@
-import AddProducts from "@/src/components/Dashboard/Products/Product/AddProducts";
+import AddProducts from "@/src/components/Ui/Dashboard/Products/Product/AddProducts";
 
 const page = () => {
   return (
