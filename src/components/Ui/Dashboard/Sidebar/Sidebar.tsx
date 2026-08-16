@@ -4,13 +4,10 @@ import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  CalendarClock,
-  CalendarDays,
   Clapperboard,
   ChevronDown,
   FileText,
   GalleryHorizontal,
-  GraduationCap,
   HelpCircle,
   Layers,
   LayoutDashboard,
@@ -19,9 +16,8 @@ import {
   PlayCircle,
   Quote,
   ShieldCheck,
-  Stethoscope,
+  Wrench,
   Tags,
-  ClipboardList,
   UserCircle,
   UserRound,
   Users,
@@ -62,24 +58,6 @@ const MENU_ITEMS: MenuItem[] = [
     href: "/dashboard",
     icon: LayoutDashboard,
     menuKey: "dashboard",
-  },
-  {
-    label: "Chambers",
-    href: "/dashboard/chambers/all-chambers",
-    icon: CalendarDays,
-    menuKey: "chambers",
-  },
-  {
-    label: "Appointments",
-    href: "/dashboard/appointments/all-appointments",
-    icon: CalendarClock,
-    menuKey: "appointments",
-  },
-  {
-    label: "Prescriptions",
-    href: "/dashboard/prescriptions/all-prescriptions",
-    icon: ClipboardList,
-    menuKey: "prescriptions",
   },
   {
     label: "Video Gallary",
@@ -152,15 +130,9 @@ const MENU_ITEMS: MenuItem[] = [
         menuKey: "about",
       },
       {
-        label: "Education Section",
-        href: "/dashboard/education/all-education",
-        icon: GraduationCap,
-        menuKey: "education",
-      },
-      {
         label: "Our Services",
         href: "/dashboard/services/all-services",
-        icon: Stethoscope,
+        icon: Wrench,
         menuKey: "services",
       },
       {
