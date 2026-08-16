@@ -7,7 +7,7 @@ export default function Experiences() {
       <div className="container">
         <div className="flex items-center gap-3 mb-8">
           <Briefcase className="w-8 h-8 text-indigo-600" />
-          <h2 className="text-3xl font-bold text-gray-900">
+          <h2 className="text-3xl font-bold text-gray-200">
             Professional Experience
           </h2>
         </div>

@@ -6,6 +6,7 @@ import Projects from "../Projects/Projects";
 import Process from "../Process/Process";
 import WhyUs from "../WhyUs/WhyUs";
 import Testimonials from "../Testimonials/Testimonials";
+import ClientVideoReviews from "../ClientVideoReviews/ClientVideoReviews";
 import Gallery from "../Gallery/Gallery";
 import Accessories from "../Accessories/Accessories";
 import Contact from "../Contact/Contact";
@@ -26,6 +27,7 @@ const RootHomePage = () => {
       <Process />
       <WhyUs />
       <Testimonials />
+      <ClientVideoReviews />
       <Gallery />
       <Accessories />
       <Blog />

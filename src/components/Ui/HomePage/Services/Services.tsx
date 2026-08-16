@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import {
   SprayCan,
@@ -10,8 +12,9 @@ import {
 } from "lucide-react";
 import SlideUp from "@/src/components/Common/Animaation/SlideUp";
 import ZoomIn from "@/src/components/Common/Animaation/ZoomIn";
+import { useGetActiveServicesQuery } from "@/src/redux/api/serviceApi";
 
-const services = [
+const defaultServices = [
   {
     icon: SprayCan,
     image: "/images/services/paint-body.jpg",
@@ -92,7 +95,23 @@ const services = [
   },
 ];
 
+const fallbackIcons = [SprayCan, Wrench, Sparkles, Lightbulb, Gauge, Shield];
+
 export default function Services() {
+  const { data } = useGetActiveServicesQuery();
+  const fetched = data?.data || [];
+
+  const services =
+    fetched.length > 0
+      ? fetched.map((s, idx) => ({
+          icon: fallbackIcons[idx % fallbackIcons.length],
+          image: s.image || "/images/services/diagnostics.jpg",
+          title: s.title,
+          description: s.description,
+          items: [] as string[],
+        }))
+      : defaultServices;
+
   return (
     <section
       id="services"
@@ -124,6 +143,7 @@ export default function Services() {
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   className="object-cover"
+                  unoptimized={image.startsWith("http")}
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
                 <div className="absolute bottom-3 left-3 w-12 h-12 rounded-full bg-black/60 backdrop-blur border border-white/10 flex items-center justify-center text-red-500">
@@ -135,17 +155,19 @@ export default function Services() {
                 <h3 className="text-white text-xl font-bold">{title}</h3>
                 <p className="text-gray-400 text-sm mt-2">{description}</p>
 
-                <ul className="mt-4 space-y-2">
-                  {items.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-2 text-gray-300 text-sm"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-red-600 mt-1.5 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                {items.length > 0 && (
+                  <ul className="mt-4 space-y-2">
+                    {items.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-2 text-gray-300 text-sm"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-600 mt-1.5 shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
                 <a
                   href="#contact"

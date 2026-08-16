@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import SlideUp from "@/src/components/Common/Animaation/SlideUp";
+import { useGetActiveGalleryItemsQuery } from "@/src/redux/api/galleryApi";
 
-const photos = [
+const defaultPhotos = [
   "/images/photogallery/711618250_122124873471227008_474043552845203726_n.jpg",
   "/images/photogallery/711618810_122124874491227008_3953375464654191192_n.jpg",
   "/images/photogallery/711688084_122124873843227008_8421712796164015588_n.jpg",
@@ -25,6 +28,11 @@ const photos = [
 ];
 
 const PhotoGallery = () => {
+  const { data } = useGetActiveGalleryItemsQuery();
+  const fetchedPhotos = (data?.data || []).flatMap((item) => item.images || []);
+  const photos = fetchedPhotos.length > 0 ? fetchedPhotos : defaultPhotos;
+  const isRemote = fetchedPhotos.length > 0;
+
   return (
     <section id="photos" className="py-20 bg-surface-2 overflow-hidden">
       <SlideUp className="relative">
@@ -43,6 +51,7 @@ const PhotoGallery = () => {
                 fill
                 sizes="(min-width: 640px) 192px, 160px"
                 className=""
+                unoptimized={isRemote}
               />
             </div>
           ))}

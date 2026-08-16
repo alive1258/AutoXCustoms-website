@@ -13,6 +13,11 @@ const nextConfig = {
         hostname: 'via.placeholder.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/**',
+      },
       // Add more domains as needed
       {
         protocol: 'https',

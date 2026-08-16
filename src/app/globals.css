@@ -227,6 +227,61 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
+/* Dashboard dark theme — the ~80 dashboard admin components (cards, tables,
+   forms) were built as a light-mode UI using the stock Tailwind gray scale
+   (bg-white/bg-gray-50 surfaces, text-gray-700/800/900 text, border-gray-200/300
+   borders). Rather than editing every file, this overrides those specific
+   utility classes — scoped to .dashboard-theme (set on the dashboard layout's
+   root element) — to the site's dark palette (--background/--border-color
+   above). Split by property (bg vs text vs border) since e.g. gray-800 is
+   used both as bg-gray-800 (a dark button, must stay dark) and text-gray-800
+   (heading text, must become light) — same token number, opposite intent. */
+.dashboard-theme .bg-white,
+.dashboard-theme .bg-gray-50 {
+  background-color: #1b2234;
+}
+.dashboard-theme .bg-gray-100 {
+  background-color: #141b2e;
+}
+.dashboard-theme .bg-gray-200 {
+  background-color: #1e293b;
+}
+.dashboard-theme .bg-gray-300 {
+  background-color: #263042;
+}
+
+.dashboard-theme .border-gray-50,
+.dashboard-theme .border-gray-100,
+.dashboard-theme .border-gray-200 {
+  border-color: var(--border-color);
+}
+.dashboard-theme .border-gray-300,
+.dashboard-theme .border-gray-400 {
+  border-color: var(--border-color-hover);
+}
+
+.dashboard-theme .text-gray-300 {
+  color: #cbd5e1;
+}
+.dashboard-theme .text-gray-400 {
+  color: #64748b;
+}
+.dashboard-theme .text-gray-500 {
+  color: #94a3b8;
+}
+.dashboard-theme .text-gray-600 {
+  color: #b0b7c3;
+}
+.dashboard-theme .text-gray-700 {
+  color: #d7dbe0;
+}
+.dashboard-theme .text-gray-800 {
+  color: #eef0f2;
+}
+.dashboard-theme .text-gray-900 {
+  color: #f8fafc;
+}
+
 /* Better alternative: Add to your Tailwind config instead */
 
 @theme inline {
