@@ -6,6 +6,20 @@ export interface User {
   mobile?: string;
 }
 
+export interface MenuActionFlags {
+  view: boolean;
+  create: boolean;
+  edit: boolean;
+  delete: boolean;
+}
+
+export interface RoleInfo {
+  slug: string;
+  name: string;
+  isSuperAdmin: boolean;
+  isStaff: boolean;
+}
+
 export interface UserProfileResponse {
   apiVersion: string;
   success: boolean;
@@ -13,6 +27,8 @@ export interface UserProfileResponse {
   status: number;
   data: {
     user: User;
+    role: RoleInfo;
+    permissions: Record<string, MenuActionFlags>;
   };
 }
 

@@ -1,8 +1,8 @@
 "use client";
 
+import { DNavbar } from "@/src/components/Ui/Dashboard/DNavbar/DNavbar";
+import { Sidebar } from "@/src/components/Ui/Dashboard/Sidebar/Sidebar";
 import React, { useState, ReactNode } from "react";
-import { Sidebar } from "@/src/components/Dashboard/Sidebar/Sidebar";
-import { DNavbar } from "@/src/components/Dashboard/DNavbar/DNavbar";
 
 interface DashboardLayoutProps {
   children?: ReactNode;
@@ -15,7 +15,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const handleOpenSidebar = () => setSidebarOpen(true);
 
   return (
-    <div className="flex h-screen bg-gray-100 overflow-hidden relative">
+    <div className="dashboard-theme flex h-screen  overflow-hidden relative">
       {sidebarOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-40 lg:hidden transition-opacity"
