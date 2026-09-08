@@ -6,7 +6,12 @@ import { FaFacebook } from "react-icons/fa";
 import MessageWidget from "./MessageWidget";
 import MobileBottomNav from "./MobileBottomNav";
 import MobileMenuSheet from "./MobileMenuSheet";
-import { CONTACT_PHONE, CONTACT_PHONE_TEL, FACEBOOK_URL, MENU_ITEMS } from "./menuItems";
+import {
+  CONTACT_PHONE,
+  CONTACT_PHONE_TEL,
+  FACEBOOK_URL,
+  MENU_ITEMS,
+} from "./menuItems";
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,11 +25,13 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* stop body scroll while the mobile menu sheet is open */
+  /* stop body scroll while the mobile menu sheet is open — only touch
+     overflow-y so the global overflow-x: hidden (mobile horizontal-scroll
+     guard) in globals.css is never overridden by this inline style */
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
+    document.body.style.overflowY = isMenuOpen ? "hidden" : "";
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflowY = "";
     };
   }, [isMenuOpen]);
 
@@ -42,36 +49,6 @@ const Navbar: React.FC = () => {
   return (
     <>
       <header className="fixed top-0 w-full z-30">
-        {/* TOP UTILITY BAR — desktop only */}
-        <div className="hidden xl:block bg-black/40 text-white/80 border-b border-white/5">
-          <div className="container flex items-center justify-between h-9 text-xs">
-            <div className="flex items-center gap-6">
-              <a
-                href={CONTACT_PHONE_TEL}
-                className="flex items-center gap-2 hover:text-white transition-all duration-300 ease-in-out"
-              >
-                <Phone size={13} className="text-red-500" />
-                {CONTACT_PHONE}
-              </a>
-              <a
-                href={FACEBOOK_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white transition-all duration-300 ease-in-out"
-              >
-                <FaFacebook size={13} className="text-red-500" />
-                Follow us on Facebook
-              </a>
-            </div>
-            <a
-              href="#contact"
-              className="bg-red-600 text-white px-3.5 py-1 rounded-full text-xs font-semibold hover:bg-red-700 transition-all duration-300 ease-in-out"
-            >
-              Book a Service
-            </a>
-          </div>
-        </div>
-
         {/* MAIN NAVBAR — desktop only; mobile relies entirely on the
             floating bottom nav / menu sheet below, so the header stays
             transparent and floats over the hero on small screens */}
@@ -112,7 +89,10 @@ const Navbar: React.FC = () => {
         </div>
       </header>
 
-      <MobileMenuSheet isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+      <MobileMenuSheet
+        isOpen={isMenuOpen}
+        onClose={() => setIsMenuOpen(false)}
+      />
 
       {/* spacer — reserved only at xl+, where the navbar is solid; on
           mobile the header is transparent and floats over the hero */}
