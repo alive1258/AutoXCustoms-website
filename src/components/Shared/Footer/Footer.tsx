@@ -32,7 +32,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-surface-2 border-t border-white/10 pt-16 pb-8">
+    <footer className="relative overflow-hidden bg-surface-2 border-t border-white/10 pt-16 pb-28 xl:pb-8">
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[linear-gradient(45deg,#be1a68_1px,transparent_1px)] bg-size-[40px_40px]" />
       </div>

@@ -13,7 +13,6 @@ const MobileMenuSheet = ({ isOpen, onClose }: MobileMenuSheetProps) => {
     <>
       {/* BACKDROP */}
       <div
-        onClick={onClose}
         className={`fixed inset-x-0 top-0 bottom-16 z-40 bg-black/60 transition-opacity duration-300 xl:hidden ${
           isOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}

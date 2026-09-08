@@ -1,7 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { GalleryHorizontal, Home, MessageCircle, Wrench, X } from "lucide-react";
+import {
+  GalleryHorizontal,
+  Home,
+  Menu,
+  MessageCircle,
+  Wrench,
+  X,
+} from "lucide-react";
 
 type NavEntry =
   | { type: "link"; key: string; label: string; id: string; icon: typeof Home }
@@ -9,7 +16,13 @@ type NavEntry =
 
 const NAV_ENTRIES: NavEntry[] = [
   { type: "link", key: "home", label: "Home", id: "home", icon: Home },
-  { type: "link", key: "services", label: "Services", id: "services", icon: Wrench },
+  {
+    type: "link",
+    key: "services",
+    label: "Services",
+    id: "services",
+    icon: Wrench,
+  },
   {
     type: "link",
     key: "gallery",
@@ -17,7 +30,7 @@ const NAV_ENTRIES: NavEntry[] = [
     id: "gallery",
     icon: GalleryHorizontal,
   },
-  { type: "button", key: "menu", label: "Menu", icon: X },
+  { type: "button", key: "menu", label: "Menu", icon: Menu },
 ];
 
 interface MobileBottomNavProps {
@@ -69,7 +82,7 @@ const MobileBottomNav = ({
           onClick={onToggleChat}
           aria-label={isChatOpen ? "Close chat" : "Open chat"}
           aria-expanded={isChatOpen}
-          className="absolute left-1/2 -top-6 z-10 flex h-14 w-14 -translate-x-1/2 cursor-pointer items-center justify-center rounded-full bg-red-600 text-white shadow-xl ring-4 ring-surface-1 transition hover:scale-105 hover:bg-red-700"
+          className="absolute left-1/2 -top-6 z-10 flex h-14 w-14 -translate-x-1/2 cursor-pointer items-center justify-center rounded-full bg-red-600 text-white shadow-xl  transition hover:scale-105 hover:bg-red-700"
         >
           {isChatOpen ? <X size={22} /> : <MessageCircle size={22} />}
         </button>
@@ -107,7 +120,9 @@ const MobileBottomNav = ({
 
             return (
               <div key={entry.key} className="flex items-center">
-                {isCenterGap && <div className="w-10 shrink-0" aria-hidden="true" />}
+                {isCenterGap && (
+                  <div className="w-10 shrink-0" aria-hidden="true" />
+                )}
                 {entry.type === "link" ? (
                   <a
                     href={`#${entry.id}`}

@@ -1,3 +1,4 @@
+import PageFadeIn from "@/src/components/Common/Animaation/PageFadeIn";
 import TrustUs from "../TrustUs/TrustUs";
 import Hero from "../HeroSection/HeroSection";
 import About from "../About/About";
@@ -17,7 +18,7 @@ import Expertise from "../Expertise/Expertise";
 
 const RootHomePage = () => {
   return (
-    <>
+    <PageFadeIn>
       <Hero />
       <PhotoGallery />
       <About />
@@ -34,7 +35,7 @@ const RootHomePage = () => {
       <FAQ />
       <Contact />
       <TrustUs />
-    </>
+    </PageFadeIn>
   );
 };
 
