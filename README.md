@@ -8,6 +8,8 @@ Modern Car Service & Customization Platform
 
 The platform provides customers with an engaging way to explore automotive services, browse available options, and interact with the service platform through a responsive and modern user interface.
 
+![image alt](https://github.com/alive1258/AutoXCustoms-website/blob/main/auto.png?raw=true)
+
 ---
 
 ## ✨ Features
